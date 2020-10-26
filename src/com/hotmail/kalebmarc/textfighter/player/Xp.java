@@ -93,7 +93,8 @@ public class Xp {
         return xpNeeded;
     }
 
-    public static int getLevel(){
+    public static int getLevel()
+    {
         return level;
     }
 
