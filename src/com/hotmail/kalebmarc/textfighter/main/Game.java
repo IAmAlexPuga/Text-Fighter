@@ -28,8 +28,6 @@ public class Game {
 	public static Enemy evilUnicorn;
 	public static Enemy ogre;
 
-	 */
-
 	//Weapons
 	public static Weapon fists;
 	public static Weapon baseballBat;
