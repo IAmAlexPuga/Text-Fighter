@@ -254,7 +254,7 @@ public class Saves {
 
 		FileReader reader = read(saveLocation);
 
-		if (reader == null) {
+		if (!checkUserExists()) {
 			Ui.cls();
 			Ui.println("------------------------------");
 			Ui.println("Cannot find save file.  ");
@@ -263,7 +263,7 @@ public class Saves {
 			Ui.pause();
 
 			data = Collections.synchronizedMap(new LinkedHashMap<String, Object>());
-			return true;
+			return false;
 		}
 
 		data = Collections.synchronizedMap((Map<String, Object>) yaml.load(reader));
