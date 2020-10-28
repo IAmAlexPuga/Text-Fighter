@@ -2,6 +2,7 @@ package com.hotmail.kalebmarc.textfighter.item;
 
 import com.hotmail.kalebmarc.textfighter.main.Food;
 import com.hotmail.kalebmarc.textfighter.main.Ui;
+import com.hotmail.kalebmarc.textfighter.main.User;
 import com.hotmail.kalebmarc.textfighter.main.Weapon;
 import com.hotmail.kalebmarc.textfighter.player.Coins;
 import com.hotmail.kalebmarc.textfighter.player.Potion;
@@ -23,11 +24,11 @@ public class Chest {
         Ui.println("          Recovery: " + Potion.get("recovery"));
         Ui.println("Coins: " + Coins.get());
         Ui.println("POWERS: " + Power.get());
-        for (int i = 0; i < Weapon.arrayWeapon.size(); i++) {
-            if (Weapon.arrayWeapon.get(i).owns()) {
-                Ui.println(Weapon.arrayWeapon.get(i).getName());
-                if (!Weapon.arrayWeapon.get(i).melee)
-                    Ui.println(" (Ammo: " + Weapon.arrayWeapon.get(i).getAmmo() + ")");
+        for (int i = 0; i < User.arrayWeapon.size(); i++) {
+            if (User.arrayWeapon.get(i).owns()) {
+                Ui.println(User.arrayWeapon.get(i).getName());
+                if (!"MELEE".equals(User.arrayWeapon.get(i).getType()))
+                    Ui.println(" (Ammo: " + User.arrayWeapon.get(i).getAmmo() + ")");
             }
         }
         for (int i = 1; i < Armour.getArmours().size(); i++) {

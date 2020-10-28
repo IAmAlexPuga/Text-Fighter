@@ -45,7 +45,7 @@ public class Stats {
         Ui.println("   High Score - " + highScore);
         Ui.println("   Current Kill Streak - " + kills);
         Ui.println("   Total POWER's Used - " + Power.used);
-        Ui.println("   Current Weapon - " + Weapon.get().getName());
+        Ui.println("   Current Weapon - " + User.getCurrentWeapon().getName());
         Ui.println("   Current Enemy - " + com.hotmail.kalebmarc.textfighter.main.Enemy.get().getName());
         Ui.println("   Total Damage Dealt - " + totalDamageDealt);
         Ui.println("   Total Kills - " + totalKills);

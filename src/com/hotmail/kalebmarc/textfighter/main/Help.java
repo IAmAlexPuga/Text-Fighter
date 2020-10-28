@@ -115,18 +115,18 @@ class Help {
             Ui.println("                         WEAPON INFO                        ");
             Ui.println("Which weapon would you like to know about?");
             Ui.println();
-            for (int i = 0; i < Weapon.arrayWeapon.size(); i++) {
-                Ui.println((i + 1) + ") " + Weapon.arrayWeapon.get(i).getName());
+            for (int i = 0; i < User.arrayWeapon.size(); i++) {
+                Ui.println((i + 1) + ") " + User.arrayWeapon.get(i).getName());
             }
-            Ui.println((Weapon.arrayWeapon.size() + 1) + ") Back");
+            Ui.println((User.arrayWeapon.size() + 1) + ") Back");
             Ui.println("------------------------------------------------------------");
 
             int menuItem = Ui.getValidInt();
 
             try {
-                Weapon.arrayWeapon.get(menuItem - 1).viewAbout();
+                User.arrayWeapon.get(menuItem - 1).viewAbout();
             } catch (Exception e) {
-                if (menuItem == (Weapon.arrayWeapon.size() + 1)) return;
+                if (menuItem == (User.arrayWeapon.size() + 1)) return;
                 Ui.println(menuItem + " is not an option.");
                 Ui.pause();
             }

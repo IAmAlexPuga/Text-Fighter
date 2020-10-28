@@ -29,11 +29,12 @@ public class GeneralWeaponTest {
     int sniperPrice = 700; int sniperAmmoUsed = 1; int sniperLevel = 7; int sniperAmmoPrice = 2; int sniperAWP = 10; int sniperChance = 0;
     int moreAmmo = 5;
 
+    /*
     @Before
     public void setUp() throws Exception{
         boolean firstInit = true;
         boolean changeDif = false;
-        Weapon.BULLET_DAMAGE = 10;
+        Gun.BULLET_DAMAGE = 10;
         int ammoToAdd = 1;
         Health.set(50,50);
         //Weapons
@@ -226,5 +227,5 @@ public class GeneralWeaponTest {
 
     }
 
-
+*/
 }

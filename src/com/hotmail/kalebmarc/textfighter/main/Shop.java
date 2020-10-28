@@ -132,12 +132,12 @@ class Shop {
             Ui.println();
             Ui.println("-------------------------------------------------------------------");
             int j = 0;
-            int[] offset = new int[Weapon.arrayWeapon.size()];
-            for (int i = 0; i < Weapon.arrayWeapon.size(); i++) {
-                if (Weapon.arrayWeapon.get(i).isBuyable()) {
-                    Ui.println((j + 1) + ") " + Weapon.arrayWeapon.get(i).getName());
-                    Ui.println("   Price: " + Weapon.arrayWeapon.get(i).price);
-                    Ui.println("   Level: " + Weapon.arrayWeapon.get(i).level);
+            int[] offset = new int[User.arrayWeapon.size()];
+            for (int i = 0; i < User.arrayWeapon.size(); i++) {
+                if (User.arrayWeapon.get(i).isBuyable()) {
+                    Ui.println((j + 1) + ") " + User.arrayWeapon.get(i).getName());
+                    Ui.println("   Price: " + User.arrayWeapon.get(i).price);
+                    Ui.println("   Level: " + User.arrayWeapon.get(i).level);
                     offset[j] = i - j;
                     j++;
                     Ui.println();
@@ -170,7 +170,7 @@ class Shop {
                     menuItem = menuItem + offset[menuItem];
 
                     //Results go here:
-                    Weapon.arrayWeapon.get(menuItem).buy();
+                    User.arrayWeapon.get(menuItem).buy();
                     return;
 
                 } catch (Exception e) {
@@ -255,12 +255,12 @@ class Shop {
             Ui.println();
             Ui.println("-------------------------------------------------------------------");
             ArrayList<Weapon> validWeapons = new ArrayList<Weapon>();
-            for (int i = 0; i < Weapon.arrayWeapon.size(); i++) {
-                if (Weapon.arrayWeapon.get(i).isBuyable() && !Weapon.arrayWeapon.get(i).melee && Weapon.arrayWeapon.get(i).owns()) {
-                    Ui.println((validWeapons.size() + 1) + ") " + Weapon.arrayWeapon.get(i).getName());
-                    Ui.println("   Price: " + Weapon.arrayWeapon.get(i).getAmmoPrice());
-                    Ui.println("   Level: " + Weapon.arrayWeapon.get(i).level);
-                    validWeapons.add(Weapon.arrayWeapon.get(i));
+            for (int i = 0; i < User.arrayWeapon.size(); i++) {
+                if (User.arrayWeapon.get(i).isBuyable() && !"MELEE".equals(User.arrayWeapon.get(i).getType()) && User.arrayWeapon.get(i).owns()) {
+                    Ui.println((validWeapons.size() + 1) + ") " + User.arrayWeapon.get(i).getName());
+                    Ui.println("   Price: " + User.arrayWeapon.get(i).getAmmoPrice());
+                    Ui.println("   Level: " + User.arrayWeapon.get(i).level);
+                    validWeapons.add(User.arrayWeapon.get(i));
                 }
             }
             Ui.println((validWeapons.size() + 1) + ") Back");
@@ -270,7 +270,12 @@ class Shop {
                 int menuItem = Ui.getValidInt();
 
                 try { //This is probably pretty bad practice. Using exceptions as a functional part of the program.. Use variables!
-                    validWeapons.get(menuItem - 1).buyAmmo();
+                    if("GUN".equals(validWeapons.get(menuItem - 1).getType()))
+                    {
+                        Gun tempWeapon = (Gun) validWeapons.get(menuItem - 1);
+                        tempWeapon.buyAmmo();
+                    }
+                    //.get(menuItem - 1).buyAmmo();
                     NPC.gratitude("Weapon", "purchase");
                     break;
 

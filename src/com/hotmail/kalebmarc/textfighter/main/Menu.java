@@ -5,7 +5,7 @@ class Menu {
 	private Menu(){}
 	public static void load(){
 		while(true){
-			
+
 			Ui.cls();
 			//Menu Screen
 			Ui.println("_____________________________________________");

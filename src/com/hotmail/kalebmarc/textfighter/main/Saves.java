@@ -90,16 +90,16 @@ public class Saves {
 		set("Stats.Kills", Stats.kills);
 		set("Stats.Total_Kills", Stats.totalKills);
 		set("Stats.High_Score", Stats.highScore);
-		set("User.Weapons.Current", Weapon.arrayWeapon.indexOf(Weapon.get()));
+		set("User.currentWeapon", User.arrayWeapon.indexOf(User.getCurrentWeapon()));
 
 
-		for (int i = 0; i < Weapon.arrayWeapon.size(); i++) {
-			if (Weapon.arrayWeapon.get(i).owns()) {
+		for (int i = 0; i < User.arrayWeapon.size(); i++) {
+			if (User.arrayWeapon.get(i).owns()) {
 				set(("User.Weapons." + i), true);
 			} else {
 				set(("User.Weapons." + i), false);
 			}
-			set(("User.Weapons.Ammo." + i), Weapon.arrayWeapon.get(i).getAmmo());
+			set(("User.Weapons.Ammo." + i), User.arrayWeapon.get(i).getAmmo());
 		}
 
 
@@ -246,13 +246,13 @@ public class Saves {
 		Stats.kills = getInteger("Stats.Kills");
 		Stats.highScore = getInteger("Stats.High_Score");
 		Stats.totalKills = getInteger("Stats.Total_Kills");
-		Weapon.set(getInteger("User.Weapons.Current"));
-
-		for(int i = 0; i < Weapon.arrayWeapon.size(); i++){
+		//User.set(getInteger("User.Weapons.Current"));
+		User.set(getInteger("User.Current"));
+		for(int i = 0; i < User.arrayWeapon.size(); i++){
 			if (getBoolean("User.Weapons." + i)){
-				Weapon.arrayWeapon.get(i).owns = true;
+				User.arrayWeapon.get(i).owns = true;
 			}
-			Weapon.arrayWeapon.get(i).setAmmo(getInteger("User.Weapons.Ammo." + i), false);
+			User.arrayWeapon.get(i).setAmmo(getInteger("User.Ammo." + i), false);
 		}
 
 		Power.set(getInteger("User.Power"), false);
@@ -452,11 +452,11 @@ public class Saves {
 			Stats.kills = readInt();
 			Stats.highScore = readInt();
 			Stats.totalKills = readInt();
-			Weapon.set(readInt());
-			for (int i = 0; i < Weapon.arrayWeapon.size(); i++)
-				Weapon.arrayWeapon.get(i).owns = readBoolean();
-			for (int i = 0; i < Weapon.arrayWeapon.size(); i++)
-				Weapon.arrayWeapon.get(i).setAmmo(readInt(), false);
+			User.set(readInt());
+			for (int i = 0; i < User.arrayWeapon.size(); i++)
+				User.arrayWeapon.get(i).owns = readBoolean();
+			for (int i = 0; i < User.arrayWeapon.size(); i++)
+				User.arrayWeapon.get(i).setAmmo(readInt(), false);
 			Power.set(readInt(), false);
 			Power.used = readInt();
 			Stats.totalDamageDealt = readInt();

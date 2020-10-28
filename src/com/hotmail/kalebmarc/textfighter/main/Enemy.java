@@ -90,7 +90,7 @@ public class Enemy {
         int found = Random.RInt(100);
         if (found <= 2 && !Game.pipe.owns) {
             Game.pipe.owns = true;
-            Weapon.set(Game.pipe);
+            User.set(Game.pipe);
             Ui.popup("You have found an old pipe!", "You found something!", JOptionPane.INFORMATION_MESSAGE);
         }
     }

@@ -56,7 +56,7 @@ public class Game {
 	private static Scanner scan = new Scanner(System.in);
 
 	public static void start() {
-		
+
 		/*
 		 * Asks if the user wants to load from the save file
 		 */
@@ -118,7 +118,7 @@ public class Game {
             Ui.println("          Survival: " + Potion.get("survival"));
             Ui.println("          Recovery: " + Potion.get("recovery"));
 			Ui.println("     Equipped armour: " + Armour.getEquipped().toString());
-			Ui.println("     Equipped Weapon: " + Weapon.get().getName());
+			Ui.println("     Equipped Weapon: " + User.getCurrentWeapon().getName());
 			//Displays ammo only if a weapon is equipped
 			Weapon.displayAmmo();
 			//--------------------
@@ -143,12 +143,12 @@ public class Game {
 				case 1:
 					int fightPath = Random.RInt(100);
 
-					if (Weapon.get().getName().equals("Sniper")) {
+					if (User.getCurrentWeapon().getName().equals("Sniper")) {
 						if (fightPath <= 30) Enemy.get().dealDamage();
 						if (fightPath > 30) sniper.dealDam();
 					} else {
 						if (fightPath <= 50) Enemy.get().dealDamage();
-						if (fightPath > 50) Weapon.get().dealDam();
+						if (fightPath > 50) User.getCurrentWeapon().dealDam();
 					}
 					break;
 				case 2:
@@ -226,7 +226,7 @@ public class Game {
             Ui.println("     Potions: ");
             Ui.println("          Survival: " + Potion.get("survival"));
             Ui.println("          Recovery: " + Potion.get("recovery"));
-			Ui.println("     Equipped Weapon: " + Weapon.get().getName());
+			Ui.println("     Equipped Weapon: " + User.getCurrentWeapon().getName());
 			Ui.println("------------------------------------------------------------------");
 			Ui.println("1) Casino");
 			Ui.println("2) Home");
@@ -279,7 +279,7 @@ public class Game {
 			Ui.println("     Coins: " + Coins.get());
 			Ui.println("     First-Aid kits: " + FirstAid.get());
             Ui.println("     Potions: " + (Potion.get("survival") + Potion.get("recovery")));
-			Ui.println("     Equipped Weapon: " + Weapon.get().getName());
+			Ui.println("     Equipped Weapon: " + User.getCurrentWeapon().getName());
 			Ui.println("------------------------------------------------------------------");
 			Ui.println("1) Equip weapon");
 			Ui.println("2) Equip Armour");
@@ -296,7 +296,7 @@ public class Game {
 
 			switch (menuChoice) {
 				case 1:
-					Weapon.choose();
+					User.chooseWeapon();
 					break;
 				case 2:
 					Armour.choose();

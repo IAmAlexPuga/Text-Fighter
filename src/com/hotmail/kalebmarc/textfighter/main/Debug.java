@@ -56,12 +56,12 @@ class Debug {
                     Xp.set(Ui.getValidInt(), false);
                     break;
                 case 3:
-                    for (int i = 0; i < Weapon.arrayWeapon.size(); i++) {
-                        Weapon.arrayWeapon.get(i).owns = true;
+                    for (int i = 0; i < User.arrayWeapon.size(); i++) {
+                        User.arrayWeapon.get(i).owns = true;
                     }
                     Power.set(100, true);
-                    for (int i = 0; i < Weapon.arrayWeapon.size(); i++) {
-                        Weapon.arrayWeapon.get(i).setAmmo(10000, false);
+                    for (int i = 0; i < User.arrayWeapon.size(); i++) {
+                        User.arrayWeapon.get(i).setAmmo(10000, false);
                     }
                     Ui.println("You now have all weapons");
                     Ui.pause();
