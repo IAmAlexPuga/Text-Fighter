@@ -182,7 +182,7 @@ public class RefactorWeaponTests {
         {
             assertNotEquals(enemyInitialHealth, Enemy.get().getHealth());
             assertEquals(enemyHealthDiff, Gun.BULLET_DAMAGE);
-            assertEquals((pistolAWP - pistolAmmoUsed), pistol.getAmmo());
+            assertEquals((pistol.ammoIncludedWithPurchase - pistol.ammoUsed), pistol.getAmmo());
         }
         else
         {
@@ -203,7 +203,7 @@ public class RefactorWeaponTests {
         {
             assertNotEquals(enemyInitialHealth, Enemy.get().getHealth());
             assertEquals(enemyHealthDiff, Gun.BULLET_DAMAGE);
-            assertEquals((smgAWP - smgAmmoUsed), smg.getAmmo());
+            assertEquals((smg.ammoIncludedWithPurchase - smg.ammoUsed), smg.getAmmo());
         }
         else
         {
@@ -224,7 +224,7 @@ public class RefactorWeaponTests {
         {
             assertNotEquals(enemyInitialHealth, Enemy.get().getHealth());
             assertEquals(enemyHealthDiff, Gun.BULLET_DAMAGE);
-            assertEquals((shotgunAWP - shotgunAmmoUsed), shotgun.getAmmo());
+            assertEquals((shotgun.ammoIncludedWithPurchase - shotgun.ammoUsed), shotgun.getAmmo());
         }
         else
         {
@@ -245,7 +245,7 @@ public class RefactorWeaponTests {
         {
             assertNotEquals(enemyInitialHealth, Enemy.get().getHealth());
             assertEquals(enemyHealthDiff, Gun.BULLET_DAMAGE);
-            assertEquals((rifleAWP - rifleAmmoUsed), rifle.getAmmo());
+            assertEquals((rifle.ammoIncludedWithPurchase - rifle.ammoUsed), rifle.getAmmo());
         }
         else
         {
@@ -267,7 +267,7 @@ public class RefactorWeaponTests {
         {
             assertNotEquals(enemyInitialHealth, Enemy.get().getHealth());
             assertEquals(enemyHealthDiff, Gun.BULLET_DAMAGE);
-            assertEquals((sniperAWP - sniperAmmoUsed), sniper.getAmmo());
+            assertEquals((sniper.ammoIncludedWithPurchase- sniper.ammoUsed), sniper.getAmmo());
         }
         else
         {
