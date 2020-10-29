@@ -191,7 +191,7 @@ public class Saves {
 		set("User.Armour.Current", Armour.get());
 
 		//Enemy
-		set("Battle.Current.Enemy", Enemy.arrayEnemy.indexOf(Enemy.get()));
+		set("Battle.Current.Enemy", Enemy.getIndex(Enemy.get()));
 		set("Battle.Current.Enemy_Health", Enemy.get().getHealth());
 		set("Battle.Current.Enemy_Max_Health", Enemy.get().getHealthMax());
 		set("Battle.Current.Enemy_First_Aid_Kit", Enemy.get().getFirstAidKit());

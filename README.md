@@ -57,3 +57,4 @@ Updates
 - Organized classes/packages
 - Battle screen Quality of Life update
 - Potion stats broken down into specific stats for different potions
+- Users can have multiple save files with different names
