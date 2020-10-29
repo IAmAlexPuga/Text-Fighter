@@ -208,7 +208,7 @@ public class Enemy {
         int found = Random.RInt(100);
         if (found <= 2 && !Game.pipe.owns) {
             Game.pipe.owns = true;
-            Weapon.set(Game.pipe);
+            WeaponInventory.set(Game.pipe);
             Ui.popup("You have found an old pipe!", "You found something!", JOptionPane.INFORMATION_MESSAGE);
         }
     }
@@ -331,5 +331,11 @@ public class Enemy {
         Ui.pause();
         Ui.cls();
         //End of weapon Info
+    }
+
+    //For testing purposes
+    public static void setCurrentEnemy(Enemy enemy)
+    {
+        current = enemy;
     }
 }
