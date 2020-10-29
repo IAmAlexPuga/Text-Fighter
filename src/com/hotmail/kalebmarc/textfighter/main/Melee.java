@@ -79,7 +79,7 @@ public class Melee extends Weapon {
             Coins.set(-price, true);
             Stats.coinsSpentOnWeapons += price;
             owns = true;
-            //current = this;
+            WeaponInventory.set(this);
             Ui.println("You have bought a " + getName() + " for " + price + " coins.");
             Ui.println("Coins: " + Coins.get());
             Ui.pause();

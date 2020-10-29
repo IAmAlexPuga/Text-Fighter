@@ -244,7 +244,7 @@ public class Settings {
 
     private static void newGameSetup() {
 
-        Coins.set(1000, false);
+        Coins.set(50, false);
         FirstAid.set(3, false);
         Potion.set("survival", 2, false);
         Potion.set("recovery", 2, false);
