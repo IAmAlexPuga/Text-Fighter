@@ -76,13 +76,15 @@ public class Game {
 
 			switch (choice) {
 				case 1:
-					if (Saves.savesPrompt())
-					{
+					if (Saves.savesPrompt()) {
 						loadedSuccessfully = true;
 						break;
 					}
-					else
-					{
+					else if (Saves.getNeedForReprompt()) {//User exits load saves screen
+						loadedSuccessfully = false;
+						break;
+					}
+					else {
 						setDif(getDifficulty(), true, false);
 						Health.set(100, 100);
 						Enemy.encounterNew();
@@ -99,10 +101,6 @@ public class Game {
 					{
 						loadedSuccessfully = true;
 					}
-					//if (choice != 1) {
-						//User.promptNameSelection();
-						//Saves.save();
-					//}
 					break;
 			}
 		}while(!loadedSuccessfully);
