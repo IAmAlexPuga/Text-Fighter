@@ -13,11 +13,6 @@ import java.io.*;
 import java.nio.charset.Charset;
 import java.util.*;
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import static com.hotmail.kalebmarc.textfighter.player.Settings.setDif;
 
 /**
  * Created by Brendon Butler on 7/27/2016.
@@ -31,6 +26,7 @@ public class Saves {
 	private static Scanner input;
 	private static String path;
 	private static Yaml yaml;
+	private static boolean needOriginalReprompt;
 
 	public static void createSavePath()
 	{
@@ -96,7 +92,7 @@ public class Saves {
 					save();
 					overwriteStatus = true;
 					break;
-				case 2:
+				default:
 					break;
 			}
 
@@ -416,30 +412,49 @@ public class Saves {
 		representer.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
 	}
 
-	public static boolean savesPrompt() {
-		createSavePath();
-		Ui.cls();
-		Ui.println("------------------------------");
-		Ui.println("What would you like to do?");
-		Ui.println("------------------------------");
-		Ui.println("1) Load Save");
-		Ui.println("2) Convert Old Save");
-		Ui.println("3) Exit");
+	public static  boolean getNeedForReprompt() {
+		return needOriginalReprompt;
+	}
 
-		switch (Ui.getValidInt()) {
-			case 1:
-				if(!load())
-				{
-					return false;
-				}
-				break;
-			case 2:
-				convert();
-				break;
-			default:
-				return false;
-		}
-		return true;
+	public static boolean savesPrompt() {
+		boolean loadSuccess = false;
+		boolean reloadSavePrompt;
+		needOriginalReprompt = true;
+		createSavePath();
+		do {
+			reloadSavePrompt = false;
+			needOriginalReprompt = false;
+			Ui.cls();
+			Ui.println("------------------------------");
+			Ui.println("What would you like to do?");
+			Ui.println("------------------------------");
+			Ui.println("1) Load Save");
+			Ui.println("2) Convert Old Save");
+			Ui.println("3) Exit");
+
+			switch (Ui.getValidInt()) {
+				case 1:
+					if (!load()) { //user does not exist
+						loadSuccess = false; //loading was not successful
+					}
+					else {
+						loadSuccess = true;  //loading was successful
+					}
+					break;
+				case 2:
+					if (!convert()) { //user changed mind
+						reloadSavePrompt = true; //user decided not to convert save
+						loadSuccess = false; //load is currently in limbo
+					}
+					break;
+				default:
+					needOriginalReprompt = true; //User exited without loading a file
+					loadSuccess = false;
+					break;
+			}
+		}while(reloadSavePrompt);
+
+		return loadSuccess;
 	}
 
 	public static boolean convert() {
