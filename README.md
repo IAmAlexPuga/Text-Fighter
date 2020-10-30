@@ -44,11 +44,11 @@ Published under the [MIT license](https://github.com/hhaslam11/Text-Fighter/blob
 
 ## Milestone 1
 --------------
-Bug Fixes
+**Bug Fixes**
 - JUnit no longer crashes when running tests
 - When users choose to start a new game with a save file name that already exists, the user now can confirm the overwrite or go back
 
-Updates
+**Updates**
 - Updated health information
 - Battle screen Quality of Life update
 - Potion stats broken down into specific stats for different potions
@@ -62,3 +62,8 @@ Updates
   * Version Test
   * Critical Hit Tests
   * Weapon Refactoring Tests
+
+**Other Notes**
+- Documentation folder was added and consists of the following:
+  * UML Diagrams of the original repository organized by package
+  * Control Flow Diagrams and Flow/Activity Diagram used for White-box testing overwriting saves and allowing multiple saves
