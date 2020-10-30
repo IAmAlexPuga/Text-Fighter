@@ -46,15 +46,19 @@ Published under the [MIT license](https://github.com/hhaslam11/Text-Fighter/blob
 --------------
 Bug Fixes
 - JUnit no longer crashes when running tests
-- Confirm overwriting save
+- When users choose to start a new game with a save file name that already exists, the user now can confirm the overwrite or go back
 
 Updates
 - Updated health information
-- Refractored weapons and enemies
-- Added critical hits to weapons
-- Added testing directory
-- Weapon upgrades
-- Organized classes/packages
 - Battle screen Quality of Life update
 - Potion stats broken down into specific stats for different potions
 - Users can have multiple save files with different names
+- Refactored weapons and enemies
+  * Now utilizes builder pattern and inheritance
+- Added critical hits to weapons
+- WeaponInventory class created to manage weapons
+- Weapons can be quickly initialized with original game constants using the WeaponInitalization class
+- New testing directory (JUnit)
+  * Version Test
+  * Critical Hit Tests
+  * Weapon Refactoring Tests
