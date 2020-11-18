@@ -76,7 +76,7 @@ public class Game {
 			 */
 			Menu.mainGameMenu();
 			userInput = Ui.getValidInt();
-			menuExec.mainGameCommands.get(userInput).invoke();
+			menuExec.executeMainGameCommand(userInput);
 			if(userInput == 10) {
 				return;
 			}
@@ -163,7 +163,7 @@ public class Game {
 			if(menuChoice == 6) {
 				return;
 			}
-			menuExec.townCommands.get(menuChoice).invoke();
+			menuExec.executeTownCommand(menuChoice);
 
 		}//While Loop
 	}//Method
@@ -180,7 +180,7 @@ public class Game {
 			{
 				return;
 			}
-			menuExec.homeCommands.get(menuChoice).invoke();
+			menuExec.executeHomeCommand(menuChoice);
 
 		}//While loop
 	}//Method

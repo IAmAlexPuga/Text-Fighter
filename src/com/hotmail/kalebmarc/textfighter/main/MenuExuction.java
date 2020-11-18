@@ -33,8 +33,26 @@ public class MenuExuction {
         setMainGameCommands();
     }
 
+    public void executeHomeCommand(int i) {
+        if(homeCommands.containsValue(i)) {
+            homeCommands.get(i).invoke();
+        }
+    }
+
+    public void executeTownCommand(int i) {
+        if(townCommands.containsValue(i)) {
+            townCommands.get(i).invoke();
+        }
+    }
+
+    public void executeMainGameCommand(int i) {
+        if(mainGameCommands.containsValue(i)) {
+            mainGameCommands.get(i).invoke();
+        }
+    }
+
     // Initializes all home commands
-    public void setHomeCommands() {
+    private void setHomeCommands() {
         homeCommands.put(1, new Command() {
             @Override
             public void invoke() {
@@ -97,7 +115,7 @@ public class MenuExuction {
     }
 
     // Initializes all town commands
-    public void setTownCommands() {
+    private void setTownCommands() {
         townCommands.put(1, new Command() {
             @Override
             public void invoke() {
@@ -131,7 +149,7 @@ public class MenuExuction {
     }
 
     // Initializes all main game commands
-    public void setMainGameCommands() {
+    private void setMainGameCommands() {
         mainGameCommands.put(1, new Command() {
             @Override
             public void invoke() {
