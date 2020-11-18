@@ -96,6 +96,7 @@ public class Game {
 			}
 		}while(!loadedSuccessfully);
 
+		int userInput = 0;
 		while (true) {
 
 			//Runs all the tests and clears the screen
@@ -109,8 +110,13 @@ public class Game {
 			 * Able to fight and go to other places from here
 			 */
 			Menu.mainGameMenu();
+			userInput = Ui.getValidInt();
+			menuExec.mainGameCommands.get(userInput).invoke();
+			if(userInput == 10) {
+				return;
+			}
 
-			switch (Ui.getValidInt()) {
+/*			switch (Ui.getValidInt()) {
 				case 1:
 					battle();
 					break;
@@ -162,11 +168,11 @@ public class Game {
 					Debug.menu();
 				default:
 					break;
-			}//Switch
+			}//Switch*/
 		}//While loop
 	}//Method
 
-	private static void battle() {
+	public static void battle() {
 		int fightPath = Random.RInt(100);
 
 		if (Weapon.get().getName().equals("Sniper")) {
@@ -190,7 +196,7 @@ public class Game {
 		}
 	}
 
-	private static void town() {
+	public static void town() {
 
 		int menuChoice;
 
@@ -203,7 +209,12 @@ public class Game {
 
 			menuChoice = Ui.getValidInt();
 
-			switch (menuChoice) {
+			if(menuChoice == 6) {
+				return;
+			}
+
+			menuExec.townCommands.get(menuChoice).invoke();
+			/*switch (menuChoice) {
 				case 1:
 					Casino.menu();
 					break;
@@ -222,8 +233,8 @@ public class Game {
 				case 6:
 					return;
 				default:
-					break;
-			}//Switch
+					break;*/
+			//}//Switch
 		}//While Loop
 	}//Method
 
