@@ -34,19 +34,19 @@ public class MenuExuction {
     }
 
     public void executeHomeCommand(int i) {
-        if(homeCommands.containsValue(i)) {
+        if(homeCommands.containsKey(i)) {
             homeCommands.get(i).invoke();
         }
     }
 
     public void executeTownCommand(int i) {
-        if(townCommands.containsValue(i)) {
+        if(townCommands.containsKey(i)) {
             townCommands.get(i).invoke();
         }
     }
 
-    public void executeMainGameCommand(int i) {
-        if(mainGameCommands.containsValue(i)) {
+    public void executeMainGameCommand(Integer i) {
+        if(mainGameCommands.containsKey(i)) {
             mainGameCommands.get(i).invoke();
         }
     }
