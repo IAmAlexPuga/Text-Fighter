@@ -10,6 +10,12 @@ class Menu {
 	
 	private Menu(){}
 
+	public static void contFightingMenu() {
+        Ui.println("What would you like to do?");
+        Ui.println("1) Continue Fighting");
+        Ui.println("2) Return Home");
+        Ui.println("----------------------------------------------------");
+    }
 	public static void usePotionMenu() {
         Ui.cls();
         Ui.println("Which potion would you like to use?");

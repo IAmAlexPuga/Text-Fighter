@@ -15,7 +15,7 @@ import static com.hotmail.kalebmarc.textfighter.player.Settings.setDif;
 public class Game {
 	private Game() {
 	}
-
+	public static MenuExuction menuExec = new MenuExuction();
 	//Enemies
 	public static Enemy darkElf;
 	public static Enemy ninja;
@@ -75,8 +75,7 @@ public class Game {
 					else if (Saves.getNeedForReprompt()) {//User exits load saves screen
 						loadedSuccessfully = false;
 						break;
-					}
-					else {
+					} else {
 						setDif(getDifficulty(), true, false);
 						Health.set(100, 100);
 						Enemy.encounterNew();
@@ -178,10 +177,7 @@ public class Game {
 			if (fightPath > 50) Weapon.get().dealDam();
 		}
 
-		Ui.println("What would you like to do?");
-		Ui.println("1) Continue Fighting");
-		Ui.println("2) Return Home");
-		Ui.println("----------------------------------------------------");
+		Menu.contFightingMenu();
 
 		switch (Ui.getValidInt()) {
 			case 1:
@@ -240,8 +236,12 @@ public class Game {
 
 			Menu.welcomeHomeMenu();
 			menuChoice = Ui.getValidInt();
-
-			switch (menuChoice) {
+			if(menuChoice == 9)
+			{
+				return;
+			}
+			menuExec.commands.get(menuChoice).invoke();
+			/*switch (menuChoice) {
 				case 1:
 					Weapon.choose();
 					break;
@@ -269,8 +269,8 @@ public class Game {
 				case 9:
 					return;
 				default:
-					break;
-			}//Switch
+					break;*/
+			//}//Switch
 		}//While loop
 	}//Method
 
