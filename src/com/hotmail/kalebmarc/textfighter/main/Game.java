@@ -56,6 +56,35 @@ public class Game {
 	private static Scanner scan = new Scanner(System.in);
 
 	public static void start() {
+		// loads the users game. If no user save data was found
+		// create a new one
+		loadGame();
+
+		// main game loop
+		int userInput = 0;
+		while (true) {
+
+			//Runs all the tests and clears the screen
+			if (Stats.kills > Stats.highScore) Stats.highScore = Stats.kills;
+			Achievements.check();
+			Saves.save();
+			Ui.cls();
+
+			/*
+			 * MAIN GAME MENU
+			 * Able to fight and go to other places from here
+			 */
+			Menu.mainGameMenu();
+			userInput = Ui.getValidInt();
+			menuExec.mainGameCommands.get(userInput).invoke();
+			if(userInput == 10) {
+				return;
+			}
+
+		}//While loop
+	}//Method
+
+	private static void loadGame() {
 		boolean loadedSuccessfully = false;
 
 		do {
@@ -95,82 +124,8 @@ public class Game {
 					break;
 			}
 		}while(!loadedSuccessfully);
+	}
 
-		int userInput = 0;
-		while (true) {
-
-			//Runs all the tests and clears the screen
-			if (Stats.kills > Stats.highScore) Stats.highScore = Stats.kills;
-			Achievements.check();
-			Saves.save();
-			Ui.cls();
-
-			/*
-			 * MAIN GAME MENU
-			 * Able to fight and go to other places from here
-			 */
-			Menu.mainGameMenu();
-			userInput = Ui.getValidInt();
-			menuExec.mainGameCommands.get(userInput).invoke();
-			if(userInput == 10) {
-				return;
-			}
-
-/*			switch (Ui.getValidInt()) {
-				case 1:
-					battle();
-					break;
-				case 2:
-					home();
-					break;
-				case 3:
-					town();
-					break;
-				case 4:
-					FirstAid.use();
-					break;
-				case 5:
-					Menu.usePotionMenu();
-					switch (Ui.getValidInt()) {
-						case 1:
-							Potion.use("survival");
-							break;
-						case 2:
-							Potion.use("recovery");
-							break;
-						case 3:
-							break;
-						default:
-							break;
-					}
-					break;
-				case 6:
-					Food.list();
-					break;
-				case 7:
-					InstaHealth.use();
-					break;
-				case 8:
-					Power.use();
-					break;
-				case 9:
-					Ui.cls();
-					Ui.popup("You ran away from the battle.", "Ran Away", JOptionPane.INFORMATION_MESSAGE);
-					Enemy.encounterNew();
-					break;
-				case 10:
-					Stats.timesQuit++;
-					return;
-				case 0:
-					Cheats.cheatGateway();
-					break;
-				case 99:
-					Debug.menu();
-				default:
-					break;
-			}//Switch*/
-		}//While loop
-	}//Method
 
 	public static void battle() {
 		int fightPath = Random.RInt(100);
@@ -200,41 +155,16 @@ public class Game {
 
 		int menuChoice;
 
-
-
 		//TOWN MENU
 		while (true) {
 
 			Menu.welcomeTownMenu();
-
 			menuChoice = Ui.getValidInt();
-
 			if(menuChoice == 6) {
 				return;
 			}
-
 			menuExec.townCommands.get(menuChoice).invoke();
-			/*switch (menuChoice) {
-				case 1:
-					Casino.menu();
-					break;
-				case 2:
-					home();
-					break;
-				case 3:
-					Bank.menu();
-					break;
-				case 4:
-					Shop.menu();
-					break;
-				case 5:
-					upgrade();
-					break;
-				case 6:
-					return;
-				default:
-					break;*/
-			//}//Switch
+
 		}//While Loop
 	}//Method
 
@@ -244,7 +174,6 @@ public class Game {
 
 		//HOME MENU
 		while (true) {
-
 			Menu.welcomeHomeMenu();
 			menuChoice = Ui.getValidInt();
 			if(menuChoice == 9)
@@ -252,36 +181,7 @@ public class Game {
 				return;
 			}
 			menuExec.homeCommands.get(menuChoice).invoke();
-			/*switch (menuChoice) {
-				case 1:
-					Weapon.choose();
-					break;
-				case 2:
-					Armour.choose();
-					break;
-				case 3:
-					Chest.view();
-					break;
-				case 4:
-					Achievements.view();
-					break;
-				case 5:
-					Stats.view();
-					break;
-				case 6:
-					About.view(true);
-					Achievements.viewedAbout = true;
-					break;
-				case 7:
-					menu();
-					break;
-				case 8:
-					Help.view();
-				case 9:
-					return;
-				default:
-					break;*/
-			//}//Switch
+
 		}//While loop
 	}//Method
 

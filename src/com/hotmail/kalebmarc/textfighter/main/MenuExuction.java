@@ -30,6 +30,7 @@ public class MenuExuction {
     public MenuExuction(){
         setHomeCommands();
         setTownCommands();
+        setMainGameCommands();
     }
 
     // Initializes all home commands
