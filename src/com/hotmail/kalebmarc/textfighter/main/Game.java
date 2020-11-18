@@ -227,7 +227,7 @@ public class Game {
 		}//While Loop
 	}//Method
 
-	private static void home() {
+	public static void home() {
 
 		int menuChoice;
 
@@ -240,7 +240,7 @@ public class Game {
 			{
 				return;
 			}
-			menuExec.commands.get(menuChoice).invoke();
+			menuExec.homeCommands.get(menuChoice).invoke();
 			/*switch (menuChoice) {
 				case 1:
 					Weapon.choose();
