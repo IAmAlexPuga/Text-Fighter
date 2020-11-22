@@ -125,6 +125,11 @@ public class Game {
 					break;
 			}
 		}while(!loadedSuccessfully);
+
+		// initializes all the commands
+		mainGameCommands.setup();
+		townCommands.setup();
+		homeCommands.setup();
 	}
 
 

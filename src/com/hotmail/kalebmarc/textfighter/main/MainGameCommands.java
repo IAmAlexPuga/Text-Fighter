@@ -22,7 +22,6 @@ public class MainGameCommands implements MenuInvoker {
     */
     public MainGameCommands() {
         mainGameCommands = new HashMap<Integer, Command>();
-        setup();
     }
 
     /*

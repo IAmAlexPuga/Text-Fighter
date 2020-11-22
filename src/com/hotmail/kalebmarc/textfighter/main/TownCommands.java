@@ -19,7 +19,6 @@ public class TownCommands implements MenuInvoker{
     */
     public TownCommands() {
         townCommands = new HashMap<Integer, Command>();
-        setup();
     }
 
     /*

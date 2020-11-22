@@ -21,7 +21,6 @@ public class HomeCommands implements MenuInvoker {
      */
     public HomeCommands() {
         homeCommands = new HashMap<Integer, Command>();
-        setup();
     }
 
     /*
