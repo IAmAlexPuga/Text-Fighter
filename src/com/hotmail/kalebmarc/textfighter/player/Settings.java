@@ -139,9 +139,6 @@ public class Settings {
     }
 
     private static void setConstants(String dif, boolean firstInit, boolean changeDif) {
-        //Checks difficulty within function and sets constants for all weapons
-        WeaponInitialization.setAllGameWeapons(dif, firstInit, changeDif);
-
         if (dif.equals("Easy")) {//Sets variables for EASY mode
 
             /* Got rid of this and created EnemyBuilder to decouple enemies from player
@@ -163,7 +160,7 @@ public class Settings {
             //Weapons
             //Gun:   (name, ammoUsed, ammoIncludedWithPurchase, buyable, price, ammoPrice, level, chanceOfMissing, firstInit, changeDif)
             //Melee: (name, startingWeapon, buyable, price, level, damageMin, damageMax, firstInit)
-           /* Game.fists = new Weapon("Fists", true, false, 0, 0, 5, 10, firstInit, changeDif);
+            Game.fists = new Weapon("Fists", true, false, 0, 0, 5, 10, firstInit, changeDif);
             Game.baseballBat = new Weapon("Baseball Bat", false, true, 120, 1, 10, 15, firstInit, changeDif);
             Game.knife = new Weapon("Knife", false, true, 125, 2, 10, 20, firstInit, changeDif);
             Game.pipe = new Weapon("Pipe", false, false, 0, 0, 5, 20, firstInit, changeDif);
@@ -171,11 +168,11 @@ public class Settings {
             Game.smg = new Weapon("Smg", 10, 75, true, 700, 1, 10, 75, firstInit, changeDif);
             Game.shotgun = new Weapon("Shotgun", 1, 12, true, 375, 2, 9, 60, firstInit, changeDif);
             Game.rifle = new Weapon("Rifle", 1, 18, true, 275, 1, 5, 10, firstInit, changeDif);
-            Game.sniper = new Weapon("Sniper", 1, 10, true, 700, 2, 7, 0, firstInit, changeDif);*/
+            Game.sniper = new Weapon("Sniper", 1, 10, true, 700, 2, 7, 0, firstInit, changeDif);
 
             //Price
             Power.price = 25;
-            Gun.BULLET_DAMAGE = 10;
+            Weapon.BULLET_DAMAGE = 10;
             FirstAid.price = 5;
             Potion.spPrice = 10;
             Potion.rpPrice = 20;
@@ -211,7 +208,7 @@ public class Settings {
             //Weapons
             //Gun:   (name, ammoUsed, ammoIncludedWithPurchase, buyable, price, ammoPrice, level, chanceOfMissing, firstInit, changeDif)
             //Melee: (name, startingWeapon, buyable, price, level, damageMin, damageMax, firstInit, changeDif)
-           /* Game.fists = new Weapon("Fists", true, false, 0, 0, 5, 10, firstInit, changeDif);
+            Game.fists = new Weapon("Fists", true, false, 0, 0, 5, 10, firstInit, changeDif);
             Game.baseballBat = new Weapon("Baseball Bat", false, true, 170, 1, 10, 15, firstInit, changeDif);
             Game.knife = new Weapon("Knife", false, true, 175, 2, 10, 20, firstInit, changeDif);
             Game.pipe = new Weapon("Pipe", false, false, 0, 0, 5, 20, firstInit, changeDif);
@@ -219,11 +216,11 @@ public class Settings {
             Game.smg = new Weapon("Smg", 10, 75, true, 800, 1, 10, 75, firstInit, changeDif);
             Game.shotgun = new Weapon("Shotgun", 1, 12, true, 415, 2, 9, 60, firstInit, changeDif);
             Game.rifle = new Weapon("Rifle", 1, 18, true, 300, 1, 5, 10, firstInit, changeDif);
-            Game.sniper = new Weapon("Sniper", 1, 10, true, 750, 2, 7, 0, firstInit, changeDif);*/
+            Game.sniper = new Weapon("Sniper", 1, 10, true, 750, 2, 7, 0, firstInit, changeDif);
 
             //PRICE
             Power.price = 75;
-            Gun.BULLET_DAMAGE = 5;
+            Weapon.BULLET_DAMAGE = 5;
             FirstAid.price = 15;
             Potion.spPrice = 25;
             Potion.rpPrice = 35;
