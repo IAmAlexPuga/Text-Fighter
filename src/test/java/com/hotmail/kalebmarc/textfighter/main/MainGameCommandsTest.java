@@ -4,18 +4,19 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class TownCommandsTest {
+public class MainGameCommandsTest {
 
     @Test
     public void setupTest() {
-        TownCommands commands = new TownCommands();
-        assertTrue(commands.townCommands.isEmpty());
+        MainGameCommands commands = new MainGameCommands();
+        assertTrue(commands.mainGameCommands.isEmpty());
 
         // Sets up the commands
         commands.setup();
         // Checks the commands are no longer null
-        assertNotNull(commands.townCommands);
+        assertNotNull(commands.mainGameCommands);
         // Checks the size is greater than 2
-        assertTrue(commands.townCommands.size() > 1);
+        assertTrue(commands.mainGameCommands.size() > 1);
     }
+
 }
