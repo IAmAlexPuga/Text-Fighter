@@ -10,12 +10,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HomeCommands implements MenuInvoker {
-    Map<Integer, Command> homeCommands = new HashMap<Integer, Command>();
+    Map<Integer, Command> homeCommands;
 
     public HomeCommands() {
-        Map<Integer, Command> homeCommands = new HashMap<Integer, Command>();
+        homeCommands = new HashMap<Integer, Command>();
         setup();
     }
+
 
     @Override
     public void setup() {
