@@ -56,9 +56,9 @@ class Menu {
         Ui.println("          Survival: " + Potion.get("survival"));
         Ui.println("          Recovery: " + Potion.get("recovery"));
         Ui.println("     Equipped armour: " + Armour.getEquipped().toString());
-        Ui.println("     Equipped Weapon: " + Weapon.get().getName());
+        Ui.println("     Equipped Weapon: " + WeaponInventory.get().getName());
         //Displays ammo only if a weapon is equipped
-        Weapon.displayAmmo();
+        WeaponInventory.get().displayAmmo();
         //--------------------
         Ui.println("--Enemy Info--");
         Ui.println("     Enemy: " + Enemy.get().getName());
@@ -101,7 +101,7 @@ class Menu {
         Ui.println("     Coins: " + Coins.get());
         Ui.println("     First-Aid kits: " + FirstAid.get());
         Ui.println("     Potions: " + (Potion.get("survival") + Potion.get("recovery")));
-        Ui.println("     Equipped Weapon: " + Weapon.get().getName());
+        Ui.println("     Equipped Weapon: " + WeaponInventory.get().getName());
         Ui.println("------------------------------------------------------------------");
         Ui.println("1) Equip weapon");
         Ui.println("2) Equip Armour");
@@ -129,7 +129,7 @@ class Menu {
         Ui.println("     Potions: ");
         Ui.println("          Survival: " + Potion.get("survival"));
         Ui.println("          Recovery: " + Potion.get("recovery"));
-        Ui.println("     Equipped Weapon: " + Weapon.get().getName());
+        Ui.println("     Equipped Weapon: " + WeaponInventory.get().getName());
         Ui.println("------------------------------------------------------------------");
         Ui.println("1) Casino");
         Ui.println("2) Home");

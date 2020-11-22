@@ -31,7 +31,7 @@ public class HomeCommands implements MenuInvoker {
         homeCommands.put(1, new Command() {
             @Override
             public void invoke() {
-                Weapon.choose();
+                WeaponInventory.choose();
             }
         });
 

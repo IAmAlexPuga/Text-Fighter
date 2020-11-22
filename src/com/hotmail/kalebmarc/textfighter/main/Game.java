@@ -136,12 +136,12 @@ public class Game {
 	public static void battle() {
 		int fightPath = Random.RInt(100);
 
-		if (Weapon.get().getName().equals("Sniper")) {
+		if (WeaponInventory.get().getName().equals("Sniper")) {
 			if (fightPath <= 30) Enemy.get().dealDamage();
 			if (fightPath > 30) sniper.dealDam();
 		} else {
 			if (fightPath <= 50) Enemy.get().dealDamage();
-			if (fightPath > 50) Weapon.get().dealDam();
+			if (fightPath > 50) WeaponInventory.get().dealDam();
 		}
 
 		Menu.contFightingMenu();

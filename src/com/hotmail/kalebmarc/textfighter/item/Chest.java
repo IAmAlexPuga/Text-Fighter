@@ -5,6 +5,7 @@ import com.hotmail.kalebmarc.textfighter.main.Ui;
 import com.hotmail.kalebmarc.textfighter.main.Weapon;
 import com.hotmail.kalebmarc.textfighter.player.Coins;
 import com.hotmail.kalebmarc.textfighter.player.Potion;
+import com.hotmail.kalebmarc.textfighter.main.WeaponInventory;
 
 public class Chest {
     private Chest() {
@@ -23,11 +24,11 @@ public class Chest {
         Ui.println("          Recovery: " + Potion.get("recovery"));
         Ui.println("Coins: " + Coins.get());
         Ui.println("POWERS: " + Power.get());
-        for (int i = 0; i < Weapon.arrayWeapon.size(); i++) {
-            if (Weapon.arrayWeapon.get(i).owns()) {
-                Ui.println(Weapon.arrayWeapon.get(i).getName());
-                if (!Weapon.arrayWeapon.get(i).melee)
-                    Ui.println(" (Ammo: " + Weapon.arrayWeapon.get(i).getAmmo() + ")");
+        for (int i = 0; i < WeaponInventory.arrayWeapon.size(); i++) {
+            if (WeaponInventory.arrayWeapon.get(i).owns()) {
+                Ui.println(WeaponInventory.arrayWeapon.get(i).getName());
+                if (!"MELEE".equals(WeaponInventory.arrayWeapon.get(i).getType())) //If the weapon is not melee
+                    Ui.println(" (Ammo: " + WeaponInventory.arrayWeapon.get(i).getAmmo() + ")");
             }
         }
         for (int i = 1; i < Armour.getArmours().size(); i++) {
