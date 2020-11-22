@@ -137,9 +137,9 @@ public class Game {
             Ui.println("          Survival: " + Potion.get("survival"));
             Ui.println("          Recovery: " + Potion.get("recovery"));
 			Ui.println("     Equipped armour: " + Armour.getEquipped().toString());
-			Ui.println("     Equipped Weapon: " + WeaponInventory.get().getName());
+			Ui.println("     Equipped Weapon: " + Weapon.get().getName());
 			//Displays ammo only if a weapon is equipped
-			WeaponInventory.get().displayAmmo();
+			Weapon.displayAmmo();
 			//--------------------
 			Ui.println("--Enemy Info--");
 			Ui.println("     Enemy: " + Enemy.get().getName());
@@ -221,12 +221,12 @@ public class Game {
 	private static void battle() {
 		int fightPath = Random.RInt(100);
 
-		if (WeaponInventory.get().getName().equals("Sniper")) {
+		if (Weapon.get().getName().equals("Sniper")) {
 			if (fightPath <= 30) Enemy.get().dealDamage();
 			if (fightPath > 30) sniper.dealDam();
 		} else {
 			if (fightPath <= 50) Enemy.get().dealDamage();
-			if (fightPath > 50) WeaponInventory.get().dealDam();
+			if (fightPath > 50) Weapon.get().dealDam();
 		}
 
 		Ui.println("What would you like to do?");
@@ -264,7 +264,7 @@ public class Game {
             Ui.println("     Potions: ");
             Ui.println("          Survival: " + Potion.get("survival"));
             Ui.println("          Recovery: " + Potion.get("recovery"));
-			Ui.println("     Equipped Weapon: " + WeaponInventory.get().getName());
+			Ui.println("     Equipped Weapon: " + Weapon.get().getName());
 			Ui.println("------------------------------------------------------------------");
 			Ui.println("1) Casino");
 			Ui.println("2) Home");
@@ -317,7 +317,7 @@ public class Game {
 			Ui.println("     Coins: " + Coins.get());
 			Ui.println("     First-Aid kits: " + FirstAid.get());
             Ui.println("     Potions: " + (Potion.get("survival") + Potion.get("recovery")));
-			Ui.println("     Equipped Weapon: " + WeaponInventory.get().getName());
+			Ui.println("     Equipped Weapon: " + Weapon.get().getName());
 			Ui.println("------------------------------------------------------------------");
 			Ui.println("1) Equip weapon");
 			Ui.println("2) Equip Armour");
@@ -334,7 +334,7 @@ public class Game {
 
 			switch (menuChoice) {
 				case 1:
-					WeaponInventory.choose();
+					Weapon.choose();
 					break;
 				case 2:
 					Armour.choose();

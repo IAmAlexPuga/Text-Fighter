@@ -44,12 +44,12 @@ public class Cheats {
                 Coins.set(5000, false);
                 FirstAid.set(5000, false);
                 InstaHealth.set(5000, false);
-                for (int i = 0; i < WeaponInventory.arrayWeapon.size(); i++) {
-                    WeaponInventory.arrayWeapon.get(i).setAmmo(5000, false);
+                for (int i = 0; i < Weapon.arrayWeapon.size(); i++) {
+                    Weapon.arrayWeapon.get(i).setAmmo(5000, false);
                 }
                 Power.set(5000, false);
-                for (int i = 0; i < WeaponInventory.arrayWeapon.size(); i++) {
-                    WeaponInventory.arrayWeapon.get(i).owns = true;
+                for (int i = 0; i < Weapon.arrayWeapon.size(); i++) {
+                    Weapon.arrayWeapon.get(i).owns = true;
                 }
                 Stats.timesCheated++;
                 for (int i = 0; i < Food.arrayFood.size(); i++)
@@ -58,13 +58,13 @@ public class Cheats {
                 Potion.set("Recovery", 5000, false);
                 break;
             case "weaponstash":
-                for (int i = 0; i <= WeaponInventory.arrayWeapon.size(); i++) {
-                    WeaponInventory.arrayWeapon.get(i).setAmmo(5000, false);
+                for (int i = 0; i <= Weapon.arrayWeapon.size(); i++) {
+                    Weapon.arrayWeapon.get(i).setAmmo(5000, false);
                 }
 
                 Power.set(5000, false);
-                for (int i = 0; i < WeaponInventory.arrayWeapon.size(); i++) {
-                    WeaponInventory.arrayWeapon.get(i).owns = true;
+                for (int i = 0; i < Weapon.arrayWeapon.size(); i++) {
+                    Weapon.arrayWeapon.get(i).owns = true;
                 }
                 Stats.timesCheated++;
                 break;
