@@ -13,11 +13,21 @@ import java.util.Map;
 public class MainGameCommands implements MenuInvoker{
     Map<Integer, Command> mainGameCommands;
 
+    /*
+    Stores the command selection from user as an int and
+    the execution function to be performed for Main Game Commands.
+    Removes the complexity of Game by removing
+    all of the switch cases when asking input for user
+    More commands can be added.
+    */
     public MainGameCommands() {
         mainGameCommands = new HashMap<Integer, Command>();
         setup();
     }
 
+    /*
+    Setups the commands
+     */
     @Override
     public void setup() {
         mainGameCommands.put(1, new Command() {
@@ -120,7 +130,9 @@ public class MainGameCommands implements MenuInvoker{
 
     }
 
-
+    /*
+    Executes a requested choice
+     */
     @Override
     public void execute(int choice) {
         if(mainGameCommands.containsKey(choice)) {

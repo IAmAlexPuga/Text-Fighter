@@ -12,12 +12,21 @@ import java.util.Map;
 public class HomeCommands implements MenuInvoker {
     Map<Integer, Command> homeCommands;
 
+    /*
+        Stores the command selection from user as an int and
+        the execution function to be performed for Home Commands.
+        Removes the complexity of Game by removing
+        all of the switch cases when asking input for user
+        More commands can be added.
+     */
     public HomeCommands() {
         homeCommands = new HashMap<Integer, Command>();
         setup();
     }
 
-
+    /*
+    Setups the commands
+     */
     @Override
     public void setup() {
         homeCommands.put(1, new Command() {
@@ -81,6 +90,9 @@ public class HomeCommands implements MenuInvoker {
         });
     }
 
+    /*
+    Executes a requested choice
+    */
     @Override
     public void execute(int choice) {
         if(homeCommands.containsKey(choice)) {
