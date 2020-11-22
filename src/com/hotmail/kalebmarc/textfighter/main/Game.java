@@ -5,17 +5,18 @@ import com.hotmail.kalebmarc.textfighter.player.*;
 
 import java.util.Scanner;
 
-import javax.swing.JOptionPane;
-
-import static com.hotmail.kalebmarc.textfighter.player.Health.getStr;
-import static com.hotmail.kalebmarc.textfighter.player.Health.upgrade;
-import static com.hotmail.kalebmarc.textfighter.player.Settings.menu;
 import static com.hotmail.kalebmarc.textfighter.player.Settings.setDif;
 
 public class Game {
 	private Game() {
 	}
-	public static MenuExuction menuExec = new MenuExuction();
+
+	//Setup of commands to be invoked by user
+	public static TownCommands townCommands = new TownCommands();
+	public static MainGameCommands mainGameCommands = new MainGameCommands();
+	public static HomeCommands homeCommands = new HomeCommands();
+
+
 	//Enemies
 	public static Enemy darkElf;
 	public static Enemy ninja;
@@ -76,7 +77,7 @@ public class Game {
 			 */
 			Menu.mainGameMenu();
 			userInput = Ui.getValidInt();
-			menuExec.executeMainGameCommand(userInput);
+			mainGameCommands.execute(userInput);
 			if(userInput == 10) {
 				return;
 			}
@@ -163,7 +164,7 @@ public class Game {
 			if(menuChoice == 6) {
 				return;
 			}
-			menuExec.executeTownCommand(menuChoice);
+			townCommands.execute(menuChoice);
 
 		}//While Loop
 	}//Method
@@ -180,7 +181,7 @@ public class Game {
 			{
 				return;
 			}
-			menuExec.executeHomeCommand(menuChoice);
+			homeCommands.execute(menuChoice);
 
 		}//While loop
 	}//Method

@@ -10,7 +10,7 @@ import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainGameCommands implements MenuInvoker{
+public class MainGameCommands implements MenuInvoker {
     Map<Integer, Command> mainGameCommands;
 
     /*
