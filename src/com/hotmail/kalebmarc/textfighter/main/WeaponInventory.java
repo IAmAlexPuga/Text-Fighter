@@ -3,7 +3,7 @@ package com.hotmail.kalebmarc.textfighter.main;
 import java.util.ArrayList;
 
 public class WeaponInventory {
-
+    //Comment for merge verification
     public static final ArrayList<Weapon> arrayWeapon = new ArrayList<>();
     public static Weapon starting;
     private static Weapon current = null;
