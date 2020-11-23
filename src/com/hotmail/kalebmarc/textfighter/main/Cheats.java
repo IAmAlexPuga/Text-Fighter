@@ -37,75 +37,37 @@ public class Cheats {
 
         switch (cheat.nextLine()) {
             case "moneylover":
-                Coins.set(1000, false);
-                Stats.timesCheated++;
+                moneylover();
                 break;
             case "givemeitall":
-                Coins.set(5000, false);
-                FirstAid.set(5000, false);
-                InstaHealth.set(5000, false);
-                for (int i = 0; i < WeaponInventory.arrayWeapon.size(); i++) {
-                    WeaponInventory.arrayWeapon.get(i).setAmmo(5000, false);
-                }
-                Power.set(5000, false);
-                for (int i = 0; i < WeaponInventory.arrayWeapon.size(); i++) {
-                    WeaponInventory.arrayWeapon.get(i).owns = true;
-                }
-                Stats.timesCheated++;
-                for (int i = 0; i < Food.arrayFood.size(); i++)
-                    Food.arrayFood.get(i).setQuantity(5000);
-                Potion.set("Survival", 5000, false);
-                Potion.set("Recovery", 5000, false);
+                givemeitall();
                 break;
             case "weaponstash":
-                for (int i = 0; i <= WeaponInventory.arrayWeapon.size(); i++) {
-                    WeaponInventory.arrayWeapon.get(i).setAmmo(5000, false);
-                }
-
-                Power.set(5000, false);
-                for (int i = 0; i < WeaponInventory.arrayWeapon.size(); i++) {
-                    WeaponInventory.arrayWeapon.get(i).owns = true;
-                }
-                Stats.timesCheated++;
+                weaponstash();
                 break;
             case "nomorepain":
-                FirstAid.set(1000, false);
-                InstaHealth.set(500, false);
-                Potion.set("Survival", 500, false);
-                Potion.set("Recovery", 500, false);
-                for (int i = 0; i < Food.arrayFood.size(); i++)
-                    Food.arrayFood.get(i).setQuantity(100);
-                Stats.timesCheated++;
+                nomorepain();
                 break;
             case "healme":
-                Health.set(Health.getOutOf());
-                Stats.timesCheated++;
+                healme();
                 break;
             case "givemeachallenge":
-                Enemy.get().setHealth(1000, 1000);
-                Stats.timesCheated++;
+                givemeachallenge();
                 break;
             case "lotsofkills":
-                Stats.kills = 5000;
-                Stats.timesCheated++;
+                lotsofkills();
                 break;
             case "suicide":
-                Health.die();
-                Stats.timesCheated++;
+                suicide();
                 break;
             case "godmode":
-                Settings.toggleGodMode();
-                Stats.timesCheated++;
+                godmode();
                 break;
             case "loanshark":
-                Loan.setCurrentLoan(0);
-                Loan.setNetDue(0);
-                Stats.timesCheated++;
+                loanshark();
                 break;
             case "thirstforfood":
-                for (int i = 0; i < Food.arrayFood.size(); i++)
-                    Food.arrayFood.get(i).setQuantity(10);
-                Stats.timesCheated++;
+                thirstforfood();
                 break;
 
         }
@@ -125,5 +87,87 @@ public class Cheats {
 
     public static void lock() {
         locked = true;
+    }
+
+    private static void moneylover() {
+        Coins.set(1000, false);
+        Stats.timesCheated++;
+    }
+
+    private static void givemeitall() {
+        Coins.set(5000, false);
+        FirstAid.set(5000, false);
+        InstaHealth.set(5000, false);
+        for (int i = 0; i < WeaponInventory.arrayWeapon.size(); i++) {
+            WeaponInventory.arrayWeapon.get(i).setAmmo(5000, false);
+        }
+        Power.set(5000, false);
+        for (int i = 0; i < WeaponInventory.arrayWeapon.size(); i++) {
+            WeaponInventory.arrayWeapon.get(i).owns = true;
+        }
+        Stats.timesCheated++;
+        for (int i = 0; i < Food.arrayFood.size(); i++)
+            Food.arrayFood.get(i).setQuantity(5000);
+        Potion.set("Survival", 5000, false);
+        Potion.set("Recovery", 5000, false);
+    }
+
+    private static void weaponstash() {
+        for (int i = 0; i <= WeaponInventory.arrayWeapon.size(); i++) {
+            WeaponInventory.arrayWeapon.get(i).setAmmo(5000, false);
+        }
+
+        Power.set(5000, false);
+        for (int i = 0; i < WeaponInventory.arrayWeapon.size(); i++) {
+            WeaponInventory.arrayWeapon.get(i).owns = true;
+        }
+        Stats.timesCheated++;
+    }
+
+    private static void nomorepain() {
+        FirstAid.set(1000, false);
+        InstaHealth.set(500, false);
+        Potion.set("Survival", 500, false);
+        Potion.set("Recovery", 500, false);
+        for (int i = 0; i < Food.arrayFood.size(); i++)
+            Food.arrayFood.get(i).setQuantity(100);
+        Stats.timesCheated++;
+    }
+
+    private static void healme() {
+        Health.set(Health.getOutOf());
+        Stats.timesCheated++;
+    }
+
+    private static void givemeachallenge() {
+        Enemy.get().setHealth(1000, 1000);
+        Stats.timesCheated++;
+    }
+
+    private static void lotsofkills() {
+        Stats.kills = 5000;
+        Stats.timesCheated++;
+    }
+
+    private static void suicide() {
+        Health.die();
+        Stats.timesCheated++;
+    }
+
+    private static void godmode() {
+        Settings.toggleGodMode();
+        Stats.timesCheated++;
+    }
+
+    private static void loanshark() {
+        Loan.setCurrentLoan(0);
+        Loan.setNetDue(0);
+        Stats.timesCheated++;
+    }
+
+    private static void thirstforfood() {
+        for (int i = 0; i < Food.arrayFood.size(); i++)
+            Food.arrayFood.get(i).setQuantity(10);
+        Stats.timesCheated++;
     }
 }
