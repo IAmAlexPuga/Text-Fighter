@@ -281,4 +281,39 @@ class Menu {
         Ui.println("2) Pay off loan");
         Ui.println("3) Back");
     }
+
+    //Save Menus
+
+    public static void saveOverwriteMenu(String name) {
+        Ui.println("------------------------------");
+        Ui.println("Are you sure you want to ");
+        Ui.println("overwrite " + name + "'s");
+        Ui.println("save file?");
+        Ui.println("------------------------------");
+        Ui.println("1) Yes");
+        Ui.println("2) Go Back");
+    }
+
+    public static void savePromptMenu() {
+        Ui.cls();
+        Ui.println("------------------------------");
+        Ui.println("What would you like to do?");
+        Ui.println("------------------------------");
+        Ui.println("1) Load Save");
+        Ui.println("2) Convert Old Save");
+        Ui.println("3) Exit");
+    }
+
+    public static void convertSaveFileMenu() {
+        Ui.cls();
+        Ui.println("------------------------------------");
+        Ui.println("WARNING- Converting a save file may");
+        Ui.println("result in a corrupt save.");
+        Ui.println("It's recommended that you make a");
+        Ui.println("backup of your current save file(s)");
+        Ui.println("before you continue.");
+        Ui.println("------------------------------------");
+        Ui.println("1) Exit");
+        Ui.println("2) Continue");
+    }
 }
