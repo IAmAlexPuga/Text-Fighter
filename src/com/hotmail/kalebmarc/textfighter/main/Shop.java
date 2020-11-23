@@ -17,22 +17,7 @@ class Shop {
 
     public static void menu() {
         while (true) {
-            Ui.cls();
-            Ui.println("-------------------------------------------------------------------");
-            Ui.println("                        Welcome to the shop!                       ");
-            Ui.println();
-            Ui.println("Coins: " + Coins.get());
-            Ui.println("First-Aid kits: " + FirstAid.get());
-            Ui.println("Potions: " + (Potion.get("survival") + Potion.get("recovery")));
-            Ui.println();
-            Ui.println("-------------------------------------------------------------------");
-            Ui.println("1) Health");
-            Ui.println("2) Weapons/Ammo");
-            Ui.println("3) Body Armour");
-            Ui.println("4) Property");
-            Ui.println("5) XP");
-            Ui.println("6) Back");
-            Ui.println("-------------------------------------------------------------------");
+            Menu.shopMenu(Coins.get(), FirstAid.get(), (Potion.get("survival") + Potion.get("recovery")));
             switch (Ui.getValidInt()) {
                 case 1:
                     health();

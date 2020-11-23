@@ -316,4 +316,25 @@ class Menu {
         Ui.println("1) Exit");
         Ui.println("2) Continue");
     }
+
+    //Shop Menu
+
+    public static void shopMenu(int coins, int firstAidKits, int potions) {
+        Ui.cls();
+        Ui.println("-------------------------------------------------------------------");
+        Ui.println("                        Welcome to the shop!                       ");
+        Ui.println();
+        Ui.println("Coins: " + coins);
+        Ui.println("First-Aid kits: " + firstAidKits);
+        Ui.println("Potions: " + potions);
+        Ui.println();
+        Ui.println("-------------------------------------------------------------------");
+        Ui.println("1) Health");
+        Ui.println("2) Weapons/Ammo");
+        Ui.println("3) Body Armour");
+        Ui.println("4) Property");
+        Ui.println("5) XP");
+        Ui.println("6) Back");
+        Ui.println("-------------------------------------------------------------------");
+    }
 }
