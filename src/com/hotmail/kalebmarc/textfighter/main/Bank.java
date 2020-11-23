@@ -8,10 +8,9 @@ public class Bank {
 
     private static double interest;
     private static int balance;
+    private static int amount;
 
     public static void menu() {
-
-        int amount;
 
         //Makes sure user level 2
         if (Xp.getLevel() < 2) {
@@ -43,44 +42,10 @@ public class Bank {
 
             switch (Ui.getValidInt()) {
                 case 1:
-                    //-----------------------------------------------------------------------------------
-                    if (Loan.hasLoan()) {
-                        Ui.msg("You can not deposit coins until you pay off your loan!");
-                        break;
-                    }
-                    Ui.println("How much money would you like to deposit? (You will have to pay " + (interest * 100) + "% of this)");
-                    Ui.println("You currently have " + Coins.get() + " coins.");
-                    do {
-                        amount = Ui.getValidInt();
-                        if (amount > Coins.get()) {
-                            Ui.println("You don't have enough coins. You only have " + Coins.get() + " coins.");
-                            amount = -1;
-                        }
-                    } while (amount < 0);
-                    if (amount == 0) return;
-
-                    //Deposit
-                    deposit(amount, interest);
-                    //-----------------------------------------------------------------------------------
+                    selectDeposit();
                     break;
                 case 2:
-                    //-----------------------------------------------------------------------------------
-                    Ui.cls();
-
-                    //Input
-                    Ui.println("How much money would you like to withdraw?");
-                    Ui.println("You currently have " + get() + " coins in your bank.");
-                    do {
-                        amount = Ui.getValidInt();
-                        if (amount > get()) {
-                            Ui.println("You don't have enough coins in your bank. You only have " + get() + " coins.");
-                            amount = -1;
-                        }
-                    } while (amount < 0);
-
-                    //Withdraw
-                    withdraw(amount);
-                    //-----------------------------------------------------------------------------------
+                    selectWithdraw();
                     break;
                 case 3:
                     Loan.menu();
@@ -108,6 +73,24 @@ public class Bank {
         interest = price;
     }
 
+    private static void selectWithdraw() {
+        Ui.cls();
+
+        //Input
+        Ui.println("How much money would you like to withdraw?");
+        Ui.println("You currently have " + get() + " coins in your bank.");
+        do {
+            amount = Ui.getValidInt();
+            if (amount > get()) {
+                Ui.println("You don't have enough coins in your bank. You only have " + get() + " coins.");
+                amount = -1;
+            }
+        } while (amount < 0);
+
+        //Withdraw
+        withdraw(amount);
+    }
+
     private static void withdraw(int amount) {
         //Calculation
         Coins.set(amount, true);
@@ -118,6 +101,26 @@ public class Bank {
         Ui.println("Amount withdrawn: " + amount);
         Ui.println("Current Balance: " + get());
         Ui.pause();
+    }
+
+    private static void selectDeposit() {
+        if (Loan.hasLoan()) {
+            Ui.msg("You can not deposit coins until you pay off your loan!");
+        } else {
+            Ui.println("How much money would you like to deposit? (You will have to pay " + (interest * 100) + "% of this)");
+            Ui.println("You currently have " + Coins.get() + " coins.");
+            do {
+                amount = Ui.getValidInt();
+                if (amount > Coins.get()) {
+                    Ui.println("You don't have enough coins. You only have " + Coins.get() + " coins.");
+                    amount = -1;
+                }
+            } while (amount < 0);
+            if (amount == 0) return;
+
+            //Deposit
+            deposit(amount, interest);
+        }
     }
 
     private static void deposit(int amount, double interest) {
