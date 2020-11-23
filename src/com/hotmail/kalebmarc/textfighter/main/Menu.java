@@ -261,4 +261,24 @@ class Menu {
         Ui.println("9) Back");
         Ui.println("------------------------------------------------------------");
     }
+
+    //Loan Menu
+
+    public static void loanMenu(double interestRate, int maxLoan, int currentLoan, int netDue, int grossDue) {
+        Ui.cls();
+        Ui.println("-------------------------------");
+        Ui.println("          PLAYER LOAN          ");
+        Ui.println();
+        Ui.println("Current interest rate: " + interestRate);
+        Ui.println("Max loan amount: " + maxLoan);
+        Ui.println("Current loan: " + currentLoan);
+        Ui.println("-------------------------------");
+        Ui.println("Net due: " + netDue);
+        Ui.println("Interest due: " + (netDue * interestRate));
+        Ui.println("Gross due: " + grossDue);
+        Ui.println("-------------------------------");
+        Ui.println("1) Get loan");
+        Ui.println("2) Pay off loan");
+        Ui.println("3) Back");
+    }
 }
