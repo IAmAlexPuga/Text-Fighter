@@ -16,6 +16,7 @@ class Menu {
         Ui.println("2) Return Home");
         Ui.println("----------------------------------------------------");
     }
+
 	public static void usePotionMenu() {
         Ui.cls();
         Ui.println("Which potion would you like to use?");
@@ -35,6 +36,7 @@ class Menu {
         Ui.println("| 2) No, Start a new game                   |");
         Ui.println("|___________________________________________|");
     }
+
 	public static void mainGameMenu() {
         Ui.println("Text-Fighter " + Version.getFull());
         Ui.println("------------------------------------------------------------------");
@@ -77,6 +79,7 @@ class Menu {
         Ui.println("10) Quit Game (Game will automatically be saved)");
         Ui.println("------------------------------------------------------------------");
     }
+
 	public static void difficultyMenu() {
         Ui.cls();
         Ui.println("_____________________________________________");
@@ -203,7 +206,7 @@ class Menu {
         Ui.println("---------------------------------------");
     }
 
-    //Bank Menu
+    //Casino Menu
 
     public static void casinoMenu(int coins) {
         Ui.cls();
@@ -218,5 +221,23 @@ class Menu {
         Ui.println("4) Lottery");
         Ui.println("5) Back");
         Ui.println("------------------------------------------------------------------");
+    }
+
+    //Debug Menu
+
+    public static void debugMenu() {
+        Ui.cls();
+        Ui.println("==================");
+        Ui.println("=== DEBUG MENU ===");
+        Ui.println();
+        Ui.println("1) Coins");
+        Ui.println("2) Xp");
+        Ui.println("3) Weapon");
+        Ui.println("4) First-Aid");
+        Ui.println("5) Insta-health");
+        Ui.println("6) Encounter new");
+        Ui.println("7) God Mode");
+        Ui.println("8) Food (x10)");
+        Ui.println("9) Go back");
     }
 }
