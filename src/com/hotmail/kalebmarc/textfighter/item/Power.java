@@ -2,6 +2,8 @@ package com.hotmail.kalebmarc.textfighter.item;
 
 import com.hotmail.kalebmarc.textfighter.main.Enemy;
 import com.hotmail.kalebmarc.textfighter.main.Ui;
+import com.hotmail.kalebmarc.textfighter.main.saves.Mapper;
+import com.hotmail.kalebmarc.textfighter.main.saves.Reader;
 import com.hotmail.kalebmarc.textfighter.player.Coins;
 import com.hotmail.kalebmarc.textfighter.player.Stats;
 import com.hotmail.kalebmarc.textfighter.player.Xp;
@@ -66,5 +68,20 @@ public class Power {
             Ui.println("You do not have enough coins.");
             Ui.pause();
         }
+    }
+
+    public static void save() {
+        Mapper.set("User.Power", powers);
+        Mapper.set("Stats.Power.Used", used);
+    }
+
+    public static void load() {
+        set(Mapper.getInteger("User.Power"), false);
+        used = Mapper.getInteger("Stats.Power.Used");
+    }
+
+    public static void convert(){
+        set(Reader.readInt(), false);
+        used = Reader.readInt();
     }
 }

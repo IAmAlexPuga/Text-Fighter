@@ -1,5 +1,7 @@
 package com.hotmail.kalebmarc.textfighter.main;
 
+import com.hotmail.kalebmarc.textfighter.main.saves.Mapper;
+import com.hotmail.kalebmarc.textfighter.main.saves.Reader;
 import com.hotmail.kalebmarc.textfighter.player.Coins;
 import com.hotmail.kalebmarc.textfighter.player.Xp;
 
@@ -135,5 +137,20 @@ public class Loan {
 
     public static void setNetDue(int due) {
         netDue = due;
+    }
+
+    public static void save(){
+        Mapper.set("Bank.Current_Loan.Balance", currentLoan);
+        Mapper.set("Bank.Current_Loan.Due", netDue);
+    }
+
+    public static void load() {
+        setCurrentLoan(Mapper.getInteger("Bank.Current_Loan.Balance"));
+        setNetDue(Mapper.getInteger("Bank.Current_Loan.Due"));
+    }
+
+    public static void convert() {
+        setCurrentLoan(Reader.readInt());
+        setNetDue(Reader.readInt());
     }
 }

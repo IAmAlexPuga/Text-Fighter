@@ -4,6 +4,8 @@ import com.hotmail.kalebmarc.textfighter.item.FirstAid;
 import com.hotmail.kalebmarc.textfighter.item.InstaHealth;
 import com.hotmail.kalebmarc.textfighter.item.Power;
 import com.hotmail.kalebmarc.textfighter.main.*;
+import com.hotmail.kalebmarc.textfighter.main.saves.Mapper;
+import com.hotmail.kalebmarc.textfighter.main.saves.Reader;
 
 public class Stats {
     //Battle Stats
@@ -106,5 +108,96 @@ public class Stats {
         }
 
         killDeathRatio = first / gcm + ":" + second / gcm;
+    }
+
+    public static void saveCoins(){
+        Mapper.set("Stats.Money_Spent.Coins", Stats.totalCoinsSpent);
+        Mapper.set("Stats.Money_Spent.Interest", Stats.coinsSpentOnBankInterest);
+        Mapper.set("Stats.Money_Spent.Weapons", Stats.coinsSpentOnWeapons);
+        Mapper.set("Stats.Money_Spent.Health", Stats.coinsSpentOnHealth);
+        Mapper.set("Stats.Money_Spent.XP", Stats.xpBought);
+        Mapper.set("Stats.Blackjack_Games_Played", Stats.blackjackGamesPlayed);
+        Mapper.set("Stats.Lottery_Tickets_Bought", Stats.lotteryTicketsBought);
+        Mapper.set("Stats.Lottery_Won", Stats.lotteryWon);
+    }
+    
+    public static void saveKills(){
+        Mapper.set("Stats.Kills", Stats.kills);
+        Mapper.set("Stats.Total_Kills", Stats.totalKills);
+        Mapper.set("Stats.High_Score", Stats.highScore);
+        Mapper.set("User.Weapons.Current", WeaponInventory.arrayWeapon.indexOf(WeaponInventory.get()));
+    }
+
+    public static void saveDamage() {
+        Mapper.set("Stats.Damage_Dealt", Stats.totalDamageDealt);
+        Mapper.set("Stats.Bullets_Fired", Stats.bulletsFired);
+        Mapper.set("Stats.Bullets_Hit", Stats.bulletsThatHit);
+    }
+
+    public static void saveOther() {
+        Mapper.set("Stats.Times_Cheated", Stats.timesCheated);
+        Mapper.set("Stats.Times_Quit", Stats.timesQuit);
+        Mapper.set("Stats.Items_Crafted", Stats.itemsCrafted);
+        Mapper.set("Stats.Games_Played.Dice", Stats.diceGamesPlayed);
+        Mapper.set("Stats.Games_Played.Slots", Stats.slotGamesPlayed);
+    }
+
+    public static void loadCoins() {
+        Stats.totalCoinsSpent = Mapper.getInteger("Stats.Money_Spent.Coins");
+        Stats.coinsSpentOnBankInterest = Mapper.getInteger("Stats.Money_Spent.Interest");
+        Stats.coinsSpentOnWeapons = Mapper.getInteger("Stats.Money_Spent.Weapons");
+        Stats.coinsSpentOnHealth = Mapper.getInteger("Stats.Money_Spent.Health");
+        Stats.xpBought = Mapper.getInteger("Stats.Money_Spent.XP");
+        Stats.blackjackGamesPlayed = Mapper.getInteger("Stats.Blackjack_Games_Played");
+        Stats.lotteryTicketsBought = Mapper.getInteger("Stats.Lottery_Tickets_Bought");
+        Stats.lotteryWon = Mapper.getInteger("Stats.Lottery_Won");
+    }
+
+    public static void loadKills() {
+        Stats.kills = Mapper.getInteger("Stats.Kills");
+        Stats.highScore = Mapper.getInteger("Stats.High_Score");
+        Stats.totalKills = Mapper.getInteger("Stats.Total_Kills");
+    }
+
+    public static void loadDamage() {
+        Stats.totalDamageDealt = Mapper.getInteger("Stats.Damage_Dealt");
+        Stats.bulletsFired = Mapper.getInteger("Stats.Bullets_Fired");
+        Stats.bulletsThatHit = Mapper.getInteger("Stats.Bullets_Hit");
+    }
+
+    public static void loadOther() {
+        Stats.timesCheated = Mapper.getInteger("Stats.Times_Cheated");
+        Stats.timesQuit = Mapper.getInteger("Stats.Times_Quit");
+        Stats.itemsCrafted = Mapper.getInteger("Stats.Items_Crafted");
+        Stats.diceGamesPlayed = Mapper.getInteger("Stats.Games_Played.Dice");
+        Stats.slotGamesPlayed = Mapper.getInteger("Stats.Games_Played.Slots");
+    }
+
+    public static void convertCoins() {
+        Stats.totalCoinsSpent = Reader.readInt();
+        Stats.coinsSpentOnBankInterest = Reader.readInt();
+        Stats.coinsSpentOnWeapons = Reader.readInt();
+        Stats.coinsSpentOnHealth = Reader.readInt();
+        Stats.xpBought = Reader.readInt();
+    }
+
+    public static void convertKills() {
+        Stats.kills = Reader.readInt();
+        Stats.highScore = Reader.readInt();
+        Stats.totalKills = Reader.readInt();
+    }
+
+    public static void convertDamage() {
+        Stats.totalDamageDealt = Reader.readInt();
+        Stats.bulletsFired = Reader.readInt();
+        Stats.bulletsThatHit = Reader.readInt();
+    }
+
+    public static void convertOther() {
+        Stats.timesCheated = Reader.readInt();
+        Stats.timesQuit = Reader.readInt();
+        Stats.itemsCrafted = Reader.readInt();
+        Stats.diceGamesPlayed = Reader.readInt();
+        Stats.slotGamesPlayed = Reader.readInt();
     }
 }

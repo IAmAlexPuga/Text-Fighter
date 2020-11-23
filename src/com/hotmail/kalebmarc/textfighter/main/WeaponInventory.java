@@ -1,5 +1,8 @@
 package com.hotmail.kalebmarc.textfighter.main;
 
+import com.hotmail.kalebmarc.textfighter.main.saves.Mapper;
+import com.hotmail.kalebmarc.textfighter.main.saves.Reader;
+
 import java.util.ArrayList;
 
 public class WeaponInventory {
@@ -73,6 +76,40 @@ public class WeaponInventory {
                     Ui.println(menuItem + " is not an option.");
                 }
             }
+        }
+    }
+
+    public static void save() {
+        Mapper.set("User.Weapons.Current", arrayWeapon.indexOf(current));
+
+        for (int i = 0; i < arrayWeapon.size(); i++) {
+            if (arrayWeapon.get(i).owns()) {
+                Mapper.set(("User.Weapons." + i), true);
+            } else {
+                Mapper.set(("User.Weapons." + i), false);
+            }
+            Mapper.set(("User.Weapons.Ammo." + i), arrayWeapon.get(i).getAmmo());
+        }
+    }
+
+    public static void load() {
+        WeaponInventory.set(Mapper.getInteger("User.Weapons.Current"));
+
+        for(int i = 0; i < WeaponInventory.arrayWeapon.size(); i++){
+            if (Mapper.getBoolean("User.Weapons." + i)){
+                WeaponInventory.arrayWeapon.get(i).owns = true;
+            }
+            WeaponInventory.arrayWeapon.get(i).setAmmo(Mapper.getInteger("User.Weapons.Ammo." + i), false);
+        }
+    }
+
+    public static void convert() {
+        set(Reader.readInt());
+        for (int i = 0; i < arrayWeapon.size(); i++){
+            arrayWeapon.get(i).owns = Reader.readBoolean();
+        }
+        for (int i = 0; i < arrayWeapon.size(); i++){
+            arrayWeapon.get(i).setAmmo(Reader.readInt(), false);
         }
     }
 

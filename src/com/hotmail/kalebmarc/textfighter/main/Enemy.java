@@ -1,5 +1,7 @@
 package com.hotmail.kalebmarc.textfighter.main;
 
+import com.hotmail.kalebmarc.textfighter.main.saves.Mapper;
+import com.hotmail.kalebmarc.textfighter.main.saves.Reader;
 import com.hotmail.kalebmarc.textfighter.player.*;
 
 import javax.swing.*;
@@ -337,5 +339,23 @@ public class Enemy {
     public static void setCurrentEnemy(Enemy enemy)
     {
         current = enemy;
+    }
+
+    public static void save() {
+        Mapper.set("Battle.Current.Enemy", getIndex(current));
+        Mapper.set("Battle.Current.Enemy_Health", current.getHealth());
+        Mapper.set("Battle.Current.Enemy_Max_Health", current.getHealthMax());
+        Mapper.set("Battle.Current.Enemy_First_Aid_Kit", current.getFirstAidKit());
+    }
+
+    public static void load() {
+        set(Mapper.getInteger("Battle.Current.Enemy"));
+        current.setHealth(Mapper.getInteger("Battle.Current.Enemy_Health"), Mapper.getInteger("Battle.Current.Enemy_Max_Health"));
+        current.setFirstAidKit(Mapper.getInteger("Battle.Current.Enemy_First_Aid_Kit"));
+    }
+
+    public static void convert() {
+        set(Reader.readInt());
+        current.setHealth(Reader.readInt(), current.getHealthMax());
     }
 }

@@ -1,5 +1,7 @@
 package com.hotmail.kalebmarc.textfighter.main;
 
+import com.hotmail.kalebmarc.textfighter.main.saves.Mapper;
+import com.hotmail.kalebmarc.textfighter.main.saves.Reader;
 import com.hotmail.kalebmarc.textfighter.player.Coins;
 import com.hotmail.kalebmarc.textfighter.player.Stats;
 import com.hotmail.kalebmarc.textfighter.player.Xp;
@@ -143,5 +145,17 @@ public class Bank {
         Ui.println("Interest Paid: " + Math.round(interest) + " coins");
         Ui.println("Current Balance: " + get() + " coins");
         Ui.pause();
+    }
+
+    public static void save() {
+        Mapper.set("Bank.Balance",balance);
+    }
+
+    public static void load() {
+        set(Mapper.getInteger("Bank.Balance"), false);
+    }
+
+    public static void convert() {
+        set(Reader.readInt(), false);
     }
 }

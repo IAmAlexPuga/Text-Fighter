@@ -1,5 +1,8 @@
 package com.hotmail.kalebmarc.textfighter.main;
 
+import com.hotmail.kalebmarc.textfighter.main.saves.Mapper;
+import com.hotmail.kalebmarc.textfighter.main.saves.Reader;
+
 import javax.swing.*;
 
 class About {
@@ -30,5 +33,17 @@ class About {
 
     public static boolean isEven(int check) {//TODO Remove when implementing JTools
         return ((check % 2) == 0);
+    }
+
+    public static void save(){
+        Mapper.set("Settings.About_Viewed", viewed);
+    }
+
+    public static void load() {
+        setViewed(Mapper.getBoolean("Settings.About_Viewed"));
+    }
+
+    public static void convert() {
+        setViewed(Reader.readBoolean());
     }
 }

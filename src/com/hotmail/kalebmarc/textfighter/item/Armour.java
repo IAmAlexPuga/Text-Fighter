@@ -3,10 +3,13 @@ package com.hotmail.kalebmarc.textfighter.item;
 import com.hotmail.kalebmarc.textfighter.main.Handle;
 import com.hotmail.kalebmarc.textfighter.main.NPC;
 import com.hotmail.kalebmarc.textfighter.main.Ui;
+import com.hotmail.kalebmarc.textfighter.main.saves.Mapper;
+import com.hotmail.kalebmarc.textfighter.main.saves.Reader;
 import com.hotmail.kalebmarc.textfighter.player.Coins;
 import com.hotmail.kalebmarc.textfighter.player.Xp;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Armour {
 
@@ -203,6 +206,31 @@ public class Armour {
         Ui.pause();
         Ui.cls();
         //End of armour Info
+    }
+
+    public static void save() {
+        List<Integer> ownedArmour = new ArrayList<>();
+
+        for (int i = 0; i < getArmours().size(); i++)
+            if (getArmours().get(i).isOwns())
+                ownedArmour.add(i);
+        Mapper.set("User.Armour.Owns", ownedArmour);
+        Mapper.set("User.Armour.Current", get());
+    }
+
+    public static void load() {
+        List<Integer> armours = (List<Integer>) Mapper.getList("User.Armour.Owns");
+
+        for(int i = 0; i < armours.size(); i++)
+            getArmours().get(i).setOwns(true);
+
+        set(Mapper.getInteger("User.Armour.Current"));
+    }
+
+    public static void convert() {
+        for (int i = 0; i < getArmours().size(); i++)
+            getArmours().get(i).setOwns(Reader.readBoolean());
+        set(Reader.readInt());
     }
 
 }

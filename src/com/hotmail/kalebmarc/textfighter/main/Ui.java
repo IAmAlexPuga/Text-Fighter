@@ -1,5 +1,8 @@
 package com.hotmail.kalebmarc.textfighter.main;
 
+import com.hotmail.kalebmarc.textfighter.main.saves.Mapper;
+import com.hotmail.kalebmarc.textfighter.main.saves.Reader;
+
 import javax.swing.*;
 import java.io.IOException;
 import java.util.Scanner;
@@ -215,5 +218,17 @@ public class Ui {
         } catch (Exception e) {
             //Blank for a reason - Not supposed to do anything.
         }
+    }
+
+    public static void save(){
+        Mapper.set("Settings.GUI.Enabled", guiEnabled);
+    }
+
+    public static void load() {
+        guiEnabled = Mapper.getBoolean("Settings.GUI.Enabled");
+    }
+
+    public static void convert() {
+        guiEnabled = Reader.readBoolean();
     }
 }
