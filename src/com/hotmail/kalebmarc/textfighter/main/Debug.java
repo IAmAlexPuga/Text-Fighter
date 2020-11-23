@@ -46,52 +46,84 @@ class Debug {
             Ui.println("9) Go back");
             switch (Ui.getValidInt()) {
                 case 1:
-                    Ui.cls();
-                    Ui.println("How much?");
-                    Coins.set(Ui.getValidInt(), false);
+                    debugCoins();
                     break;
                 case 2:
-                    Ui.cls();
-                    Ui.println("How much?");
-                    Xp.set(Ui.getValidInt(), false);
+                    debugXp();
                     break;
                 case 3:
-                    for (int i = 0; i < WeaponInventory.arrayWeapon.size(); i++) {
-                        WeaponInventory.arrayWeapon.get(i).owns = true;
-                    }
-                    Power.set(100, true);
-                    for (int i = 0; i < WeaponInventory.arrayWeapon.size(); i++) {
-                        WeaponInventory.arrayWeapon.get(i).setAmmo(10000, false);
-                    }
-                    Ui.println("You now have all weapons");
-                    Ui.pause();
+                    debugWeapon();
                     break;
                 case 4:
-                    Ui.cls();
-                    Ui.println("How much?");
-                    FirstAid.set(Ui.getValidInt(), false);
+                    debugFirstAid();
                     break;
                 case 5:
-                    Ui.cls();
-                    Ui.println("How much?");
-                    InstaHealth.set(Ui.getValidInt(), false);
+                    debugInstaHealth();
                     break;
                 case 6:
-                    Enemy.encounterNew();
+                    debugNewEncounter();
                     break;
                 case 7:
-                    Settings.toggleGodMode();
+                    debugGodMode();
                     break;
                 case 8:
-                    Ui.cls();
-                    for (int i = 0; i < Food.arrayFood.size(); i++) {
-                        Ui.println(i + ") " + Food.arrayFood.get(i).getName());
-                    }
-                    Food.arrayFood.get(Ui.getValidInt()).setQuantity(10);
+                    debugFood();
                     break;
                 case 9:
                     return;
             }
         }
+    }
+
+    private static void debugCoins() {
+        Ui.cls();
+        Ui.println("How much?");
+        Coins.set(Ui.getValidInt(), false);
+    }
+
+    private static void debugXp() {
+        Ui.cls();
+        Ui.println("How much?");
+        Xp.set(Ui.getValidInt(), false);
+    }
+
+    private static void debugWeapon() {
+        for (int i = 0; i < WeaponInventory.arrayWeapon.size(); i++) {
+            WeaponInventory.arrayWeapon.get(i).owns = true;
+        }
+        Power.set(100, true);
+        for (int i = 0; i < WeaponInventory.arrayWeapon.size(); i++) {
+            WeaponInventory.arrayWeapon.get(i).setAmmo(10000, false);
+        }
+        Ui.println("You now have all weapons");
+        Ui.pause();
+    }
+
+    private static void debugFirstAid() {
+        Ui.cls();
+        Ui.println("How much?");
+        FirstAid.set(Ui.getValidInt(), false);
+    }
+
+    private static void debugInstaHealth() {
+        Ui.cls();
+        Ui.println("How much?");
+        InstaHealth.set(Ui.getValidInt(), false);
+    }
+
+    private static void debugNewEncounter() {
+        Enemy.encounterNew();
+    }
+
+    private static void debugGodMode() {
+        Settings.toggleGodMode();
+    }
+
+    private static void debugFood() {
+        Ui.cls();
+        for (int i = 0; i < Food.arrayFood.size(); i++) {
+            Ui.println(i + ") " + Food.arrayFood.get(i).getName());
+        }
+        Food.arrayFood.get(Ui.getValidInt()).setQuantity(10);
     }
 }
