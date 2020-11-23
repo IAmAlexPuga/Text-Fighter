@@ -71,7 +71,10 @@ Published under the [MIT license](https://github.com/hhaslam11/Text-Fighter/blob
   ## Milestone 2
 --------------
 **Updates**
-- Moved all menu prints to Menu.java
+- Moved all instances of menu prints to Menu.java
 - Implemented Command Pattern for user actions
 - Refractored Game.java
   * Reduced complexity, coupling, and utilize command pattern
+- Refactored Bank.java, Cheats.java, and Debug.java
+  * Reduced complexity, coupling
+  * Improved changeability, readability
