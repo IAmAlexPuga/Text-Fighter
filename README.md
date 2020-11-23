@@ -67,3 +67,11 @@ Published under the [MIT license](https://github.com/hhaslam11/Text-Fighter/blob
 - Documentation folder was added and consists of the following:
   * UML Diagrams of the original repository organized by package
   * Control Flow Diagrams and Flow/Activity Diagram used for White-box testing overwriting saves and allowing multiple saves
+  
+  ## Milestone 2
+--------------
+**Updates**
+- Moved all menu prints to Menu.java
+- Implemented Command Pattern for user actions
+- Refractored Game.java
+ * Reduced complexity, coupling, and utilize command pattern
