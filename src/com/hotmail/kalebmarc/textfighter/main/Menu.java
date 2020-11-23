@@ -240,4 +240,25 @@ class Menu {
         Ui.println("8) Food (x10)");
         Ui.println("9) Go back");
     }
+
+    //Help Menu
+
+    public static void helpMenu() {
+        Ui.cls();
+        Ui.println("------------------------------------------------------------");
+        Ui.println("                         HELP MENU                          ");
+        Ui.println("Here you can find (almost) all the information you need to");
+        Ui.println("know about Text-Fighter.");
+        Ui.println("------------------------------------------------------------");
+        Ui.println("1) Enemy");
+        Ui.println("2) Armour");
+        Ui.println("3) Weapon");
+        Ui.println("4) Health");
+        Ui.println("5) Food");
+        Ui.println("6) XP");
+        Ui.println("7) Cheats");
+        Ui.println("8) Achievements");
+        Ui.println("9) Back");
+        Ui.println("------------------------------------------------------------");
+    }
 }
