@@ -20,25 +20,7 @@ public class Bank {
 
         while (true) {
 
-            Ui.cls();
-            Ui.println("---------------------------------------");
-            Ui.println("                BANK              ");
-            Ui.println();
-            Ui.println("You can deposit your coins into");
-            Ui.println("the bank, so they will be safe if");
-            Ui.println("you die. However, you will need to");
-            Ui.println("pay " + (interest * 100) + "% of what you're depositing");
-            Ui.println("every time (Rounded to the nearest ");
-            Ui.println("whole number).");
-            Ui.println();
-            Ui.println("Balance (Coins in the bank): " + get());
-            Ui.println("Coins: " + Coins.get());
-            Ui.println();
-            Ui.println("1) Deposit");
-            Ui.println("2) Withdraw");
-            Ui.println("3) Loans");
-            Ui.println("4) Back");
-            Ui.println("---------------------------------------");
+            Menu.bankMenu(interest, get(), Coins.get());
 
             switch (Ui.getValidInt()) {
                 case 1:
