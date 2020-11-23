@@ -74,4 +74,4 @@ Published under the [MIT license](https://github.com/hhaslam11/Text-Fighter/blob
 - Moved all menu prints to Menu.java
 - Implemented Command Pattern for user actions
 - Refractored Game.java
- * Reduced complexity, coupling, and utilize command pattern
+  * Reduced complexity, coupling, and utilize command pattern
