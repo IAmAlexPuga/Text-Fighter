@@ -31,19 +31,7 @@ class Debug {
         }
 
         while (true) {
-            Ui.cls();
-            Ui.println("==================");
-            Ui.println("=== DEBUG MENU ===");
-            Ui.println();
-            Ui.println("1) Coins");
-            Ui.println("2) Xp");
-            Ui.println("3) Weapon");
-            Ui.println("4) First-Aid");
-            Ui.println("5) Insta-health");
-            Ui.println("6) Encounter new");
-            Ui.println("7) God Mode");
-            Ui.println("8) Food (x10)");
-            Ui.println("9) Go back");
+            Menu.debugMenu();
             switch (Ui.getValidInt()) {
                 case 1:
                     debugCoins();
