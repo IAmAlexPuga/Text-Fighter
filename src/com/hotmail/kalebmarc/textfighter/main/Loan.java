@@ -13,21 +13,7 @@ public class Loan {
 
     public static void menu() {
         while (true) {
-            Ui.cls();
-            Ui.println("-------------------------------");
-            Ui.println("          PLAYER LOAN          ");
-            Ui.println();
-            Ui.println("Current interest rate: " + INTEREST_RATE);
-            Ui.println("Max loan amount: " + getMaxLoan());
-            Ui.println("Current loan: " + currentLoan);
-            Ui.println("-------------------------------");
-            Ui.println("Net due: " + netDue);
-            Ui.println("Interest due: " + (netDue * INTEREST_RATE));
-            Ui.println("Gross due: " + getGrossDue());
-            Ui.println("-------------------------------");
-            Ui.println("1) Get loan");
-            Ui.println("2) Pay off loan");
-            Ui.println("3) Back");
+            Menu.loanMenu(INTEREST_RATE, getMaxLoan(), currentLoan, netDue, getGrossDue());
             switch (Ui.getValidInt()) {
                 case 1:
                     createLoan();

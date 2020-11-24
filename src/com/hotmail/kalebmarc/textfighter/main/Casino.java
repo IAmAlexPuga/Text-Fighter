@@ -23,18 +23,7 @@ public class Casino {
     public static void menu() {
 
         while (true) {
-            Ui.cls();
-            Ui.println("------------------------------------------------------------------");
-            Ui.println("                      WELCOME TO THE CASINO                       ");
-            Ui.println();
-            Ui.println("     Coins: " + Coins.get());
-            Ui.println("------------------------------------------------------------------");
-            Ui.println("1) Dice Game");
-            Ui.println("2) Slots");
-            Ui.println("3) Blackjack");
-            Ui.println("4) Lottery");
-            Ui.println("5) Back");
-            Ui.println("------------------------------------------------------------------");
+            Menu.casinoMenu(Coins.get());
 
             int menuChoice = Ui.getValidInt();
 

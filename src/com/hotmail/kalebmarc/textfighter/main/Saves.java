@@ -71,13 +71,7 @@ public class Saves {
 		boolean overwriteStatus = false;
 
 			//Confirmation of overwrite
-			Ui.println("------------------------------");
-			Ui.println("Are you sure you want to ");
-			Ui.println("overwrite " + User.name() + "'s");
-			Ui.println("save file?");
-			Ui.println("------------------------------");
-			Ui.println("1) Yes");
-			Ui.println("2) Go Back");
+			Menu.saveOverwriteMenu(User.name());
 
 			switch(Ui.getValidInt()){
 				case 1:
@@ -223,13 +217,7 @@ public class Saves {
 		do {
 			reloadSavePrompt = false;
 			needOriginalReprompt = false;
-			Ui.cls();
-			Ui.println("------------------------------");
-			Ui.println("What would you like to do?");
-			Ui.println("------------------------------");
-			Ui.println("1) Load Save");
-			Ui.println("2) Convert Old Save");
-			Ui.println("3) Exit");
+			Menu.savePromptMenu();
 
 			switch (Ui.getValidInt()) {
 				case 1:
@@ -241,7 +229,7 @@ public class Saves {
 					}
 					break;
 				case 2:
-					if (!convertPrompt()) { //user changed mind
+					if (!convert()) { //user changed mind
 						reloadSavePrompt = true; //user decided not to convert save
 						loadSuccess = false; //load is currently in limbo
 					}
@@ -256,29 +244,18 @@ public class Saves {
 		return loadSuccess;
 	}
 
-	public static boolean convertPrompt() {
-		Ui.cls();
-		Ui.println("------------------------------------");
-		Ui.println("WARNING- Converting a save file may");
-		Ui.println("result in a corrupt save.");
-		Ui.println("It's recommended that you make a");
-		Ui.println("backup of your current save file(s)");
-		Ui.println("before you continue.");
-		Ui.println("------------------------------------");
-		Ui.println("1) Exit");
-		Ui.println("2) Continue");
-
-		switch(Ui.getValidInt()){
-			case 1:
-				return false;
-			case 2:
-				return convert();
-			default:
-				return false;
-		}
-	}
-
 	public static boolean convert() {
+			Menu.convertSaveFileMenu();
+			switch(Ui.getValidInt()){
+				case 1:
+					return false;
+				case 2:
+					break;
+				default:
+					return false;
+			}
+
+
 		try {
 			File file = new File(path);
 

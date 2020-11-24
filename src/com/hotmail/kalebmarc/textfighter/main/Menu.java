@@ -16,6 +16,7 @@ class Menu {
         Ui.println("2) Return Home");
         Ui.println("----------------------------------------------------");
     }
+
 	public static void usePotionMenu() {
         Ui.cls();
         Ui.println("Which potion would you like to use?");
@@ -35,6 +36,7 @@ class Menu {
         Ui.println("| 2) No, Start a new game                   |");
         Ui.println("|___________________________________________|");
     }
+
 	public static void mainGameMenu() {
         Ui.println("Text-Fighter " + Version.getFull());
         Ui.println("------------------------------------------------------------------");
@@ -77,6 +79,7 @@ class Menu {
         Ui.println("10) Quit Game (Game will automatically be saved)");
         Ui.println("------------------------------------------------------------------");
     }
+
 	public static void difficultyMenu() {
         Ui.cls();
         Ui.println("_____________________________________________");
@@ -176,6 +179,162 @@ class Menu {
                 default:
                     break;
             }
-        }//Loop
-    }//Method
-}//Class
+        }
+    }
+
+    //Bank Menu
+
+    public static void bankMenu(double interest, int balance, int coins) {
+        Ui.cls();
+        Ui.println("---------------------------------------");
+        Ui.println("                BANK              ");
+        Ui.println();
+        Ui.println("You can deposit your coins into");
+        Ui.println("the bank, so they will be safe if");
+        Ui.println("you die. However, you will need to");
+        Ui.println("pay " + (interest * 100) + "% of what you're depositing");
+        Ui.println("every time (Rounded to the nearest ");
+        Ui.println("whole number).");
+        Ui.println();
+        Ui.println("Balance (Coins in the bank): " + balance);
+        Ui.println("Coins: " + coins);
+        Ui.println();
+        Ui.println("1) Deposit");
+        Ui.println("2) Withdraw");
+        Ui.println("3) Loans");
+        Ui.println("4) Back");
+        Ui.println("---------------------------------------");
+    }
+
+    //Casino Menu
+
+    public static void casinoMenu(int coins) {
+        Ui.cls();
+        Ui.println("------------------------------------------------------------------");
+        Ui.println("                      WELCOME TO THE CASINO                       ");
+        Ui.println();
+        Ui.println("     Coins: " + coins);
+        Ui.println("------------------------------------------------------------------");
+        Ui.println("1) Dice Game");
+        Ui.println("2) Slots");
+        Ui.println("3) Blackjack");
+        Ui.println("4) Lottery");
+        Ui.println("5) Back");
+        Ui.println("------------------------------------------------------------------");
+    }
+
+    //Debug Menu
+
+    public static void debugMenu() {
+        Ui.cls();
+        Ui.println("==================");
+        Ui.println("=== DEBUG MENU ===");
+        Ui.println();
+        Ui.println("1) Coins");
+        Ui.println("2) Xp");
+        Ui.println("3) Weapon");
+        Ui.println("4) First-Aid");
+        Ui.println("5) Insta-health");
+        Ui.println("6) Encounter new");
+        Ui.println("7) God Mode");
+        Ui.println("8) Food (x10)");
+        Ui.println("9) Go back");
+    }
+
+    //Help Menu
+
+    public static void helpMenu() {
+        Ui.cls();
+        Ui.println("------------------------------------------------------------");
+        Ui.println("                         HELP MENU                          ");
+        Ui.println("Here you can find (almost) all the information you need to");
+        Ui.println("know about Text-Fighter.");
+        Ui.println("------------------------------------------------------------");
+        Ui.println("1) Enemy");
+        Ui.println("2) Armour");
+        Ui.println("3) Weapon");
+        Ui.println("4) Health");
+        Ui.println("5) Food");
+        Ui.println("6) XP");
+        Ui.println("7) Cheats");
+        Ui.println("8) Achievements");
+        Ui.println("9) Back");
+        Ui.println("------------------------------------------------------------");
+    }
+
+    //Loan Menu
+
+    public static void loanMenu(double interestRate, int maxLoan, int currentLoan, int netDue, int grossDue) {
+        Ui.cls();
+        Ui.println("-------------------------------");
+        Ui.println("          PLAYER LOAN          ");
+        Ui.println();
+        Ui.println("Current interest rate: " + interestRate);
+        Ui.println("Max loan amount: " + maxLoan);
+        Ui.println("Current loan: " + currentLoan);
+        Ui.println("-------------------------------");
+        Ui.println("Net due: " + netDue);
+        Ui.println("Interest due: " + (netDue * interestRate));
+        Ui.println("Gross due: " + grossDue);
+        Ui.println("-------------------------------");
+        Ui.println("1) Get loan");
+        Ui.println("2) Pay off loan");
+        Ui.println("3) Back");
+    }
+
+    //Save Menus
+
+    public static void saveOverwriteMenu(String name) {
+        Ui.println("------------------------------");
+        Ui.println("Are you sure you want to ");
+        Ui.println("overwrite " + name + "'s");
+        Ui.println("save file?");
+        Ui.println("------------------------------");
+        Ui.println("1) Yes");
+        Ui.println("2) Go Back");
+    }
+
+    public static void savePromptMenu() {
+        Ui.cls();
+        Ui.println("------------------------------");
+        Ui.println("What would you like to do?");
+        Ui.println("------------------------------");
+        Ui.println("1) Load Save");
+        Ui.println("2) Convert Old Save");
+        Ui.println("3) Exit");
+    }
+
+    public static void convertSaveFileMenu() {
+        Ui.cls();
+        Ui.println("------------------------------------");
+        Ui.println("WARNING- Converting a save file may");
+        Ui.println("result in a corrupt save.");
+        Ui.println("It's recommended that you make a");
+        Ui.println("backup of your current save file(s)");
+        Ui.println("before you continue.");
+        Ui.println("------------------------------------");
+        Ui.println("1) Exit");
+        Ui.println("2) Continue");
+    }
+
+    //Shop Menu
+
+    public static void shopMenu(int coins, int firstAidKits, int potions) {
+        Ui.cls();
+        Ui.println("-------------------------------------------------------------------");
+        Ui.println("                        Welcome to the shop!                       ");
+        Ui.println();
+        Ui.println("Coins: " + coins);
+        Ui.println("First-Aid kits: " + firstAidKits);
+        Ui.println("Potions: " + potions);
+        Ui.println();
+        Ui.println("-------------------------------------------------------------------");
+        Ui.println("1) Health");
+        Ui.println("2) Weapons/Ammo");
+        Ui.println("3) Body Armour");
+        Ui.println("4) Property");
+        Ui.println("5) XP");
+        Ui.println("6) Back");
+        Ui.println("-------------------------------------------------------------------");
+    }
+}
