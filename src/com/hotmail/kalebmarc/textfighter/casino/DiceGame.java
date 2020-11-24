@@ -40,9 +40,6 @@ public class DiceGame extends BasicCasinoGame {
         Ui.println("Enter 0 to go back");
     }
 
-    private void setBet(){
-
-    }
     private void pickFirstNumber(){
         do {//First Number
             Ui.cls();
