@@ -241,7 +241,7 @@ public class Saves {
 					}
 					break;
 				case 2:
-					if (!convert()) { //user changed mind
+					if (!convertPrompt()) { //user changed mind
 						reloadSavePrompt = true; //user decided not to convert save
 						loadSuccess = false; //load is currently in limbo
 					}
@@ -256,11 +256,7 @@ public class Saves {
 		return loadSuccess;
 	}
 
-	public static void convertPrompt() {
-
-	}
-
-	public static boolean convert() {
+	public static boolean convertPrompt() {
 		Ui.cls();
 		Ui.println("------------------------------------");
 		Ui.println("WARNING- Converting a save file may");
@@ -276,11 +272,13 @@ public class Saves {
 			case 1:
 				return false;
 			case 2:
-				break;
+				return convert();
 			default:
 				return false;
 		}
+	}
 
+	public static boolean convert() {
 		try {
 			File file = new File(path);
 
