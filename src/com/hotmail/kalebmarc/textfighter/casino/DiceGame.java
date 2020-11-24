@@ -6,6 +6,12 @@ import com.hotmail.kalebmarc.textfighter.main.Ui;
 import com.hotmail.kalebmarc.textfighter.player.Coins;
 
 public class DiceGame extends BasicCasinoGame {
+    private boolean exit = false;
+    private static int firstNumber;
+    private static int secondNumber;
+    private static int dice1;
+    private static int dice2;
+    private static int bet;
 
     public DiceGame() {
         super("------------------------------------------------------------------\n" +
@@ -22,15 +28,7 @@ public class DiceGame extends BasicCasinoGame {
                 GameType.DICE);
     }
 
-    @Override
-    public int play(int selection) {
-        int bet;
-        int firstNumber;
-        int secondNumber;
-        int dice1;
-        int dice2;
-        int coinsWon = 0;
-
+    private void printBetGreeting(){
         //Greeting & Input
         Ui.cls();
         Ui.println(getHeader());
@@ -40,6 +38,73 @@ public class DiceGame extends BasicCasinoGame {
         Ui.println("To begin, enter the amount of coins you would like to bet.. ");
         Ui.println("It must be between 10, and 250.");
         Ui.println("Enter 0 to go back");
+    }
+
+    private void setBet(){
+
+    }
+    private void pickFirstNumber(){
+        do {//First Number
+            Ui.cls();
+            Ui.println(getHeader());
+            Ui.println();
+            Ui.println("Now, pick your first number.");
+            Ui.println("It must be between 1, and 6.");
+            firstNumber = Ui.getValidInt();
+        } while (firstNumber < 1 || firstNumber > 6);
+    }
+
+    private void pickSecondNumber() {
+        do {//Second Number
+            Ui.cls();
+            Ui.println(getHeader());
+            Ui.println();
+            Ui.println("Finally, pick your second number.");
+            Ui.println("It must be between 1, and 6.");
+            secondNumber = Ui.getValidInt();
+        } while (secondNumber < 1 || secondNumber > 6);
+    }
+
+    private void rollDice() {
+        //Rolling Dice
+        Ui.cls();
+        Ui.println("Rolling the two dice...");
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            Handle.error(e.toString());
+        }
+        dice1 = Random.RInt(6);
+        dice2 = Random.RInt(6);
+    }
+
+    private int calcResults() {
+        int coinsWon = 0;
+        boolean fNum = false, sNum = false;
+        if (firstNumber == dice1 || firstNumber == dice2) fNum = true;
+        if (secondNumber == dice1 || secondNumber == dice2) sNum = true;
+        if (fNum ^ sNum) coinsWon = bet * 2;
+        if (fNum && sNum) coinsWon = bet * 5;
+        return coinsWon;
+    }
+
+    private void printResults(int coinsWon) {
+        Ui.cls();
+        Ui.println(getHeader());
+        Ui.println("Your bet: " + bet);
+        Ui.println("First number: " + firstNumber);
+        Ui.println("Second Number: " + secondNumber);
+        Ui.println();
+        Ui.println("Dice 1: " + dice1);
+        Ui.println("Dice 2: " + dice2);
+        Ui.println();
+        Ui.println("Coins Won: " + coinsWon);
+    }
+    @Override
+    public int play(int selection) {
+        int coinsWon = 0;
+
+        printBetGreeting();
         do {//Bet
             bet = Ui.getValidInt();
             if (bet == 0) return -1;
@@ -52,53 +117,16 @@ public class DiceGame extends BasicCasinoGame {
         } while (bet < 10 || bet > 250);
 
         Coins.set(-bet, true);
-
-        do {//First Number
-            Ui.cls();
-            Ui.println(getHeader());
-            Ui.println();
-            Ui.println("Now, pick your first number.");
-            Ui.println("It must be between 1, and 6.");
-            firstNumber = Ui.getValidInt();
-        } while (firstNumber < 1 || firstNumber > 6);
-        do {//Second Number
-            Ui.cls();
-            Ui.println(getHeader());
-            Ui.println();
-            Ui.println("Finally, pick your second number.");
-            Ui.println("It must be between 1, and 6.");
-            secondNumber = Ui.getValidInt();
-        } while (secondNumber < 1 || secondNumber > 6);
-
-        //Rolling Dice
-        Ui.cls();
-        Ui.println("Rolling the two dice...");
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            Handle.error(e.toString());
-        }
-        dice1 = Random.RInt(6);
-        dice2 = Random.RInt(6);
+        pickFirstNumber();
+        pickSecondNumber();
+        rollDice();
         Ui.println("Results are ready! Press enter to continue.");
         Ui.pause();
 
         //Results
-        boolean fNum = false, sNum = false;
-        if (firstNumber == dice1 || firstNumber == dice2) fNum = true;
-        if (secondNumber == dice1 || secondNumber == dice2) sNum = true;
-        if (fNum ^ sNum) coinsWon = bet * 2;
-        if (fNum && sNum) coinsWon = bet * 5;
-        Ui.cls();
-        Ui.println(getHeader());
-        Ui.println("Your bet: " + bet);
-        Ui.println("First number: " + firstNumber);
-        Ui.println("Second Number: " + secondNumber);
-        Ui.println();
-        Ui.println("Dice 1: " + dice1);
-        Ui.println("Dice 2: " + dice2);
-        Ui.println();
-        Ui.println("Coins Won: " + coinsWon);
+        coinsWon = calcResults();
+        printResults(coinsWon);
+
         return coinsWon;
     }
 

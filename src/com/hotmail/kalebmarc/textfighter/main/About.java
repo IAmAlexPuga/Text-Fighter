@@ -5,7 +5,7 @@ import com.hotmail.kalebmarc.textfighter.main.saves.Reader;
 
 import javax.swing.*;
 
-class About {
+public class About {
     private static boolean viewed = false;
 
     private About() {
