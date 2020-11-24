@@ -3,6 +3,8 @@ package com.hotmail.kalebmarc.textfighter.main;
 import com.hotmail.kalebmarc.textfighter.item.FirstAid;
 import com.hotmail.kalebmarc.textfighter.item.InstaHealth;
 import com.hotmail.kalebmarc.textfighter.item.Power;
+import com.hotmail.kalebmarc.textfighter.main.saves.Mapper;
+import com.hotmail.kalebmarc.textfighter.main.saves.Reader;
 import com.hotmail.kalebmarc.textfighter.player.*;
 
 import java.util.Scanner;
@@ -169,5 +171,20 @@ public class Cheats {
         for (int i = 0; i < Food.arrayFood.size(); i++)
             Food.arrayFood.get(i).setQuantity(10);
         Stats.timesCheated++;
+    }
+
+    public static void saveEnableStatus(){
+        Mapper.set("Settings.Cheats.Enabled", enabled());
+        Mapper.set("Settings.Cheats.Locked", locked());
+    }
+
+    public static void loadEnableStatus(){
+        if(Mapper.getBoolean("Settings.Cheats.Enabled")) enable();
+        if(Mapper.getBoolean("Settings.Cheats.Locked")) lock();
+    }
+
+    public static void convertEnableStatus() {
+        if (Reader.readBoolean()) enable();
+        if (Reader.readBoolean()) lock();
     }
 }

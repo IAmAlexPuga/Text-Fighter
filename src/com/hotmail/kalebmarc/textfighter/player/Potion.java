@@ -2,6 +2,8 @@ package com.hotmail.kalebmarc.textfighter.player;
 
 import com.hotmail.kalebmarc.textfighter.main.Handle;
 import com.hotmail.kalebmarc.textfighter.main.Ui;
+import com.hotmail.kalebmarc.textfighter.main.saves.Mapper;
+import com.hotmail.kalebmarc.textfighter.main.saves.Reader;
 
 public class Potion {
     public static int spUsed = 0;
@@ -157,4 +159,27 @@ public class Potion {
                 return 0; //need to modify
         }
     }
+
+    public static void save(){
+        Mapper.set("Stats.Potions.Survival.Used", Potion.spUsed);
+        Mapper.set("Stats.Potions.Recovery.Used", Potion.rpUsed);
+        Mapper.set("User.Potions.Survival", Potion.get("survival"));
+        Mapper.set("User.Potions.Recovery", Potion.get("recovery"));
+    }
+
+    public static void load() {
+        Potion.spUsed = Mapper.getInteger("Stats.Potions.Survival.Used");
+        Potion.rpUsed = Mapper.getInteger("Stats.Potions.Recovery.Used");
+        Potion.set("survival", Mapper.getInteger("User.Potions.Survival"), false);
+        Potion.set("recovery", Mapper.getInteger("User.Potions.Recovery"), false);
+    }
+
+    public static void convert() {
+        Potion.spUsed = Reader.readInt();
+        Potion.rpUsed = Reader.readInt();
+        Potion.set("survival", Reader.readInt(), false);
+        Potion.set("recovery", Reader.readInt(), false);
+    }
+
+
 }

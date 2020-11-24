@@ -3,6 +3,8 @@ package com.hotmail.kalebmarc.textfighter.player;
 import com.hotmail.kalebmarc.textfighter.main.Cheats;
 import com.hotmail.kalebmarc.textfighter.main.Handle;
 import com.hotmail.kalebmarc.textfighter.main.Ui;
+import com.hotmail.kalebmarc.textfighter.main.saves.Mapper;
+import com.hotmail.kalebmarc.textfighter.main.saves.Reader;
 
 import javax.swing.*;
 
@@ -99,5 +101,30 @@ public class Xp {
 
     public static String getFull(){
         return xp + "/" + xpNeeded + " xp";
+    }
+
+    public static void save(){
+        Mapper.set("User.XP.Level", Xp.getLevel());
+        Mapper.set("User.XP.Needed", Xp.getOutOf());
+        Mapper.set("User.XP.Amount", Xp.get());
+        Mapper.set("User.XP.Total", Xp.total);
+        Mapper.set("User.XP.battleXp", Xp.getBattleXp());
+
+    }
+
+    public static void load() {
+        Xp.setLevel(Mapper.getInteger("User.XP.Level"));
+        Xp.setOutOf(Mapper.getInteger("User.XP.Needed"));
+        Xp.set(Mapper.getInteger("User.XP.Amount"), false);
+        Xp.total = Mapper.getInteger("User.XP.Total");
+        Xp.setBattleXp(Mapper.getInteger("User.XP.battleXp"), false);
+    }
+
+    public static void convert() {
+        Xp.setLevel(Reader.readInt());
+        Xp.setOutOf(Reader.readInt());
+        Xp.set(Reader.readInt(), false);
+        Xp.total = Reader.readInt();
+        Xp.setBattleXp(Reader.readInt(), false);
     }
 }

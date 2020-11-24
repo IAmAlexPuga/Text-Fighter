@@ -4,9 +4,12 @@ import com.hotmail.kalebmarc.textfighter.main.Casino;
 import com.hotmail.kalebmarc.textfighter.main.Cheats;
 import com.hotmail.kalebmarc.textfighter.main.Enemy;
 import com.hotmail.kalebmarc.textfighter.main.Ui;
+import com.hotmail.kalebmarc.textfighter.main.saves.Mapper;
+import com.hotmail.kalebmarc.textfighter.main.saves.Reader;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Achievements {
     //Arrays for achievements
@@ -393,5 +396,112 @@ public class Achievements {
             honestPlayer = true;
             get("Honest Player");
         }
+    }
+
+    public static void saveBought(){
+        Mapper.set("Achievements.Bought_Item", Achievements.boughtItem);
+    }
+
+    public static void saveMain() {
+        Mapper.set("Achievements.Money_Maker", moneyMaker);
+        Mapper.set("Achievements.Enemy_Slayer", enemySlayer);
+        Mapper.set("Achievements.First_Kill", firstKill);
+        Mapper.set("Achievements.Time_For_An_Upgrade", timeForAnUpgrade);
+
+        List<String> enemiesKilled = new ArrayList<>();
+
+        for (int i = 0; i < Enemy.arrayEnemy.size(); i++)
+            if (arrayKilled.get(i))
+                enemiesKilled.add(Enemy.arrayEnemy.get(i).getName());
+
+        Mapper.set("Achievements.Enemies_Killed", enemiesKilled);
+        Mapper.set("Achievements.Text_Fighter_Master", textFighterMaster);
+        Mapper.set("Achievements.YAY_POWER", YAYPOWER);
+        Mapper.set("Achievements.Aww_You_Care_About_Me", awwYouCareAboutMe);
+        Mapper.set("Achievements.Slayer", slayer);
+        Mapper.set("Achievements.Nobodys_Perfect", nobodysPerfect);
+        Mapper.set("Achievements.Making_Money", makingMoney);
+        Mapper.set("Achievements.Gambling_Addiction", gamblingAddiction);
+        Mapper.set("Achievements.Unnatural_Luck", unnaturalLuck);
+        Mapper.set("Achievements.Level_2_Fighter", level2Fighter);
+        Mapper.set("Achievements.Level_3_Fighter", level3Fighter);
+        Mapper.set("Achievements.Level_4_Fighter", level4Fighter);
+        Mapper.set("Achievements.Level_5_Fighter", level5Fighter);
+        Mapper.set("Achievements.Level_6_Fighter", level6Fighter);
+        Mapper.set("Achievements.Level_7_Fighter", level7Fighter);
+        Mapper.set("Achievements.Level_8_Fighter", level8Fighter);
+        Mapper.set("Achievements.Level_9_Fighter", level9Fighter);
+        Mapper.set("Achievements.Level_10_Fighter", level10Fighter);
+        Mapper.set("Achievements.Honest_Player", honestPlayer);
+    }
+
+    public static void loadBoughts(){
+        Achievements.boughtItem = Mapper.getBoolean("Achievements.Bought_Item");
+    }
+
+    public static void loadMain(){
+        moneyMaker         = Mapper.getBoolean("Achievements.Money_Maker");
+        enemySlayer        = Mapper.getBoolean("Achievements.Enemy_Slayer");
+        firstKill          = Mapper.getBoolean("Achievements.First_Kill");
+        timeForAnUpgrade   = Mapper.getBoolean("Achievements.Time_For_An_Upgrade");
+
+        List<String> achSet = (List<String>) Mapper.getList("Achievements.Enemies_Killed");
+
+        for (int i = 0; i < achSet.size(); i++){
+            for (int x = 0; x < Enemy.arrayEnemy.size(); x++){
+                if(Enemy.arrayEnemy.get(x).getName().equals(achSet.get(i))){
+                    arrayKilled.set(x, true);
+                }
+            }
+        }
+        textFighterMaster  = Mapper.getBoolean("Achievements.Text_Fighter_Master");
+        YAYPOWER           = Mapper.getBoolean("Achievements.YAY_POWER");
+        awwYouCareAboutMe  = Mapper.getBoolean("Achievements.Aww_You_Care_About_Me");
+        slayer             = Mapper.getBoolean("Achievements.Slayer");
+        nobodysPerfect     = Mapper.getBoolean("Achievements.Nobodys_Perfect");
+        makingMoney        = Mapper.getBoolean("Achievements.Making_Money");
+        unnaturalLuck 		= Mapper.getBoolean("Achievements.Unnatural_Luck");
+        gamblingAddiction  = Mapper.getBoolean("Achievements.Gambling_Addiction");
+        level2Fighter      = Mapper.getBoolean("Achievements.Level_2_Fighter");
+        level3Fighter      = Mapper.getBoolean("Achievements.Level_3_Fighter");
+        level4Fighter      = Mapper.getBoolean("Achievements.Level_4_Fighter");
+        level5Fighter      = Mapper.getBoolean("Achievements.Level_5_Fighter");
+        level6Fighter      = Mapper.getBoolean("Achievements.Level_6_Fighter");
+        level7Fighter      = Mapper.getBoolean("Achievements.Level_7_Fighter");
+        level8Fighter      = Mapper.getBoolean("Achievements.Level_8_Fighter");
+        level9Fighter      = Mapper.getBoolean("Achievements.Level_9_Fighter");
+        level10Fighter     = Mapper.getBoolean("Achievements.Level_10_Fighter");
+        honestPlayer       = Mapper.getBoolean("Achievements.Honest_Player");
+
+    }
+
+    public static void convertBoughts() {
+        Achievements.boughtItem = Reader.readBoolean();
+    }
+
+    public static void convertMain() {
+        moneyMaker = Reader.readBoolean();
+        enemySlayer = Reader.readBoolean();
+        firstKill = Reader.readBoolean();
+        timeForAnUpgrade = Reader.readBoolean();
+        for (int i = 0; i < Enemy.arrayEnemy.size(); i++)
+            arrayKilled.set(i, Reader.readBoolean());
+        textFighterMaster = Reader.readBoolean();
+        YAYPOWER = Reader.readBoolean();
+        awwYouCareAboutMe = Reader.readBoolean();
+        slayer = Reader.readBoolean();
+        nobodysPerfect = Reader.readBoolean();
+        makingMoney = Reader.readBoolean();
+        gamblingAddiction = Reader.readBoolean();
+        level2Fighter = Reader.readBoolean();
+        level3Fighter = Reader.readBoolean();
+        level4Fighter = Reader.readBoolean();
+        level5Fighter = Reader.readBoolean();
+        level6Fighter = Reader.readBoolean();
+        level7Fighter = Reader.readBoolean();
+        level8Fighter = Reader.readBoolean();
+        level9Fighter = Reader.readBoolean();
+        level10Fighter = Reader.readBoolean();
+        honestPlayer = Reader.readBoolean();
     }
 }

@@ -4,6 +4,9 @@ import com.hotmail.kalebmarc.textfighter.item.Armour;
 import com.hotmail.kalebmarc.textfighter.main.Enemy;
 import com.hotmail.kalebmarc.textfighter.main.Handle;
 import com.hotmail.kalebmarc.textfighter.main.Ui;
+import com.hotmail.kalebmarc.textfighter.main.saves.Mapper;
+import com.hotmail.kalebmarc.textfighter.main.saves.Reader;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.*;
@@ -192,4 +195,30 @@ public class Health {
             }
         }//While(true)
     }//upgrade
+
+    public static void saveHealth(){
+        Mapper.set("User.Health", health);
+        Mapper.set("User.Max_Health", outOf);
+    }
+
+    public static void loadHealth(){
+        set(Mapper.getInteger("User.Health"), Mapper.getInteger("User.Max_Health"));
+    }
+
+    public static void convertHealth(){
+        set(Reader.readInt(), Reader.readInt());
+    }
+
+    public static void saveTimesDied(){ Mapper.set("Stats.TimesDied", timesDied); }
+
+    public static void loadTimesDied(){
+        Health.timesDied = Mapper.getInteger("Stats.TimesDied");
+    }
+
+    public static void convertTimesDied(){
+        Health.timesDied = Reader.readInt();
+    }
+
+
+
 }//Health

@@ -1,6 +1,8 @@
 package com.hotmail.kalebmarc.textfighter.item;
 
 import com.hotmail.kalebmarc.textfighter.main.Ui;
+import com.hotmail.kalebmarc.textfighter.main.saves.Mapper;
+import com.hotmail.kalebmarc.textfighter.main.saves.Reader;
 import com.hotmail.kalebmarc.textfighter.player.Coins;
 import com.hotmail.kalebmarc.textfighter.player.Health;
 import com.hotmail.kalebmarc.textfighter.player.Stats;
@@ -84,5 +86,20 @@ public class    FirstAid {
             Ui.println("You do not have enough coins.");
             Ui.pause();
         }
+    }
+
+    public static void save(){
+        Mapper.set("User.FirstAid.Owns",firstAid);
+        Mapper.set("Stats.FirstAid.Used", used);
+    }
+
+    public static void load(){
+        set(Mapper.getInteger("User.FirstAid.Owns"), false);
+        used = Mapper.getInteger("Stats.FirstAid.Used");
+    }
+
+    public static void convert(){
+        set(Reader.readInt(), false);
+        used = Reader.readInt();
     }
 }

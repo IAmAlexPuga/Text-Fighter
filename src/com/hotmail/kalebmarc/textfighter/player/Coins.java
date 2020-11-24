@@ -1,5 +1,8 @@
 package com.hotmail.kalebmarc.textfighter.player;
 
+import com.hotmail.kalebmarc.textfighter.main.saves.Mapper;
+import com.hotmail.kalebmarc.textfighter.main.saves.Reader;
+
 public class Coins {
 
     private static int coins;
@@ -23,4 +26,15 @@ public class Coins {
         }
     }
 
+    public static void save(){
+        Mapper.set("User.Balance", coins);
+    }
+
+    public static void load() {
+        Coins.set(Mapper.getInteger("User.Balance"), false);
+    }
+
+    public static void convert() {
+        Coins.set(Reader.readInt(), false);
+    }
 }

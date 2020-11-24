@@ -4,6 +4,8 @@ import com.hotmail.kalebmarc.textfighter.item.FirstAid;
 import com.hotmail.kalebmarc.textfighter.item.InstaHealth;
 import com.hotmail.kalebmarc.textfighter.item.Power;
 import com.hotmail.kalebmarc.textfighter.main.*;
+import com.hotmail.kalebmarc.textfighter.main.saves.Mapper;
+import com.hotmail.kalebmarc.textfighter.main.saves.Reader;
 
 public class Settings {
 
@@ -245,7 +247,7 @@ public class Settings {
 
     private static void newGameSetup() {
 
-        Coins.set(5000, false);
+        Coins.set(50, false);
         FirstAid.set(3, false);
         Potion.set("survival", 2, false);
         Potion.set("recovery", 2, false);
@@ -277,4 +279,23 @@ public class Settings {
             Ui.msg("Godmode has been enabled");
         }
     }
+
+
+
+    public static void saveDiff() {
+        Mapper.set("Settings.Difficulty.Level", Settings.getDif());
+        Mapper.set("Settings.Difficulty.Locked", Settings.difLocked);
+    }
+
+    public static void loadDiff() {
+        Settings.setDif(Mapper.getString("Settings.Difficulty.Level"), false, false);
+        Settings.difLocked = Mapper.getBoolean("Settings.Difficulty.Locked");
+    }
+    public static void convertDiff() {
+        Settings.setDif(Reader.input.nextLine(), false, false);
+        Settings.difLocked = Reader.readBoolean();
+    }
+
+
+
 }

@@ -4,6 +4,8 @@ import com.hotmail.kalebmarc.textfighter.casino.BlackjackGame;
 import com.hotmail.kalebmarc.textfighter.casino.DiceGame;
 import com.hotmail.kalebmarc.textfighter.casino.LotteryGame;
 import com.hotmail.kalebmarc.textfighter.casino.SlotsGame;
+import com.hotmail.kalebmarc.textfighter.main.saves.Mapper;
+import com.hotmail.kalebmarc.textfighter.main.saves.Reader;
 import com.hotmail.kalebmarc.textfighter.player.Coins;
 
 public class Casino {
@@ -44,5 +46,22 @@ public class Casino {
                     break;
             }//Switch
         }//main loop
+    }
+
+    public static void save(){
+        Mapper.set("Casino.Winnings",totalCoinsWon);
+        Mapper.set("Casino.Plays", gamesPlayed);
+        Mapper.set("Casino.Lottery.Bought_Tickets", LOTTERY.getTicketsBought());
+    }
+
+    public static void load(){
+        totalCoinsWon = Mapper.getInteger("Casino.Winnings");
+        gamesPlayed = Mapper.getInteger("Casino.Plays");
+        LOTTERY.setTicketsBought(Mapper.getInteger("Casino.Lottery.Bought_Tickets"));
+    }
+
+    public static void convert(){
+        totalCoinsWon = Reader.readInt();
+        gamesPlayed = Reader.readInt();
     }
 }
