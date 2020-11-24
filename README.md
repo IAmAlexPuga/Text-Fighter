@@ -73,8 +73,16 @@ Published under the [MIT license](https://github.com/hhaslam11/Text-Fighter/blob
 **Updates**
 - Moved all instances of menu prints to Menu.java
 - Implemented Command Pattern for user actions
-- Refractored Game.java
+- Refactored Game.java
   * Reduced complexity, coupling, and utilize command pattern
 - Refactored Bank.java, Cheats.java, and Debug.java
   * Reduced complexity, coupling
   * Improved changeability, readability
+- Refactored Saves.java
+  * Reduced complexity, cohesion, and lines of code
+  * Removed methods related to reading the save file into Reader.java
+  * Removed methods related to mapping into Mapping.java
+  * All classes involved in saving, loading, and converting now have save, load, and convert methods
+      - Some have multiple respective methods as files are organized in the order of "Health", "Coins", "Xp", "Potions", "Settings", "Combat", "Enemy", "Achievements" and "Other" therefore calling different members of the same class to save, load, or convert at different times
+- Refactored DiceGame.java
+  * Broke down play method god class into smaller functions with one responsibility
